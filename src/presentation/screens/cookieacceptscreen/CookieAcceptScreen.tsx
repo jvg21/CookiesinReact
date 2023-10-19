@@ -9,6 +9,7 @@ import { CookieLink } from "../../components/cookielink/CookieLink";
 import { CookieAcceptScreenType } from "../../../application/types/screens/cookieacceptscreen/CookieAcceptScreenType";
 import { Spacer } from "../../components/spacer/spacer";
 import { TextsConstants } from "../../../application/common/constants/TextsConstants";
+import PageTexts from '../../../infrastructure/services/presentationTexts.json'
 
 const CookieImageContainer = styled.div`
     & img{
@@ -27,13 +28,13 @@ export function CookieAcceptScreen(props: CookieAcceptScreenType) {
             </CookieImageContainer>
 
             <CookieTitle color={props.themeConfig.primaryTextColor} FontSize={TextsConstants.MEDIUM_TITLE_SIZE}>
-                Cookies e Privaciadade
+                {PageTexts.pageTitle}
             </CookieTitle>
 
             <Spacer Height="50px" Width="100%" />
 
             <CookieDescription color={props.themeConfig.primaryTextColor} TextAlign="center" FontSize={TextsConstants.MEDIUM_FONT_SIZE}>
-                Esse WebSite Utiliza Cookies Para Garantir a Melhor Experiência do Usuário.
+                {PageTexts.pageDescription}
             </CookieDescription>
             <CookieLink Color={props.themeConfig.primaryAccentColor} FontSize={TextsConstants.MEDIUM_FONT_SIZE} href="./termos" target="_blank">Termos de Uso</CookieLink>
 
