@@ -10,6 +10,7 @@ import { CookieCloseButton } from "../cookieclosebutton/CookieCloseButton";
 const CookieCardContainer = styled.div<{ cookieThemeConfig: CookieThemeConfig; }>`
     background-color: ${(props) => props.cookieThemeConfig.backgroundColor};
     position:relative;
+    
     display:flex;
     justify-content: center;
     align-items: center;
@@ -20,11 +21,17 @@ const CookieCardContainer = styled.div<{ cookieThemeConfig: CookieThemeConfig; }
     height: 500px;
     border-radius: 15px;
     box-shadow: 3px 3px 15px -3px rgba(0,0,0,0.75);
-    overflow: hidden;
+    transition: all 1.2s ease;
+    
 
     @media screen and (max-width: 450px) {
         margin: 0 3vw;
     }
+
+    @media screen and (max-height: 450px) {
+        margin-top: 17.5rem
+    }
+    
 `;
 
 export function Cookie(props: { state: boolean, themeConfig: CookieThemeConfig }) {

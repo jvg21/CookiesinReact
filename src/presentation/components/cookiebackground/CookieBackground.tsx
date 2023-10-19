@@ -7,6 +7,7 @@ export const CookieBackground = styled.div<{ cookieThemeConfig: CookieThemeConfi
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-y:scroll;
     top: 0;
     right: 0;
     left: 0;
