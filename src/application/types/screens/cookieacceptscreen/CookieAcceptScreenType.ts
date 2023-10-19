@@ -3,4 +3,6 @@ import { CookieThemeConfig } from "../../../model/cookiethemeconfig/CookieThemeC
 export type CookieAcceptScreenType = { 
     setConfig: (foo: boolean) => void, 
     themeConfig: CookieThemeConfig;
+    
+
 }

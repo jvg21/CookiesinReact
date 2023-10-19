@@ -16,14 +16,14 @@ const CookieCardContainer = styled.div<{ cookieThemeConfig: CookieThemeConfig; }
     flex-direction: column;
     z-index: 9999999;
     width: 450px;
-    min-width: 280px;
+    min-width: 240px;
     height: 500px;
     border-radius: 15px;
     box-shadow: 3px 3px 15px -3px rgba(0,0,0,0.75);
     overflow: hidden;
 
     @media screen and (max-width: 450px) {
-        margin: 0 2vw;;
+        margin: 0 3vw;
     }
 `;
 

@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
-export const CookieButton = styled.button<{ BackGround?: string, TextColor?: string, HoverBgColor?: string }>`
+export const CookieButton = styled.button<{ BackGround?: string, TextColor?: string, HoverBgColor?: string,HoverTextColor?:string}>`
     background-color: ${props => props.BackGround ? props.BackGround : "white"};
     color: ${props => props.TextColor ? props.TextColor : "black"};
     width: 80%;
     height: 40px;
-    margin: 1% 0;
     border: none;
     border-radius: 5px;
     font-size: larger;
@@ -17,5 +16,6 @@ export const CookieButton = styled.button<{ BackGround?: string, TextColor?: str
 
     &:hover{
         background-color: ${props => props.HoverBgColor ? props.HoverBgColor : " "};
+        color: ${props => props.HoverTextColor ? props.HoverTextColor : " "};
     }
 `;

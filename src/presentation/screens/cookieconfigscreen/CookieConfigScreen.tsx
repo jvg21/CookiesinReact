@@ -8,6 +8,8 @@ import { CookieThemeConfig } from "../../../application/model/cookiethemeconfig/
 import { ButtonDiv } from "../../components/cookiebuttondiv/CookieButtonDiv";
 import { CookieButton } from "../../components/cookiebutton/CookieButton";
 import { CookieLink } from "../../components/cookielink/CookieLink";
+import { TextsConstants } from "../../../application/common/constants/TextsConstants";
+import { Spacer } from "../../components/spacer/spacer";
 
 const CookieOptionList = styled.ul`
     display: flex;
@@ -27,23 +29,31 @@ export function CookieConfigScreen(props: { setConfig: (foo: boolean) => void, t
         <CookieBody
             cookieThemeConfig={props.themeConfig}
         >
-            <CookieTitle>
+            <CookieTitle FontSize={TextsConstants.MEDIUM_TITLE_SIZE}>
                 Sobre os Cokies Nesse Site
             </CookieTitle>
+            <Spacer Height={'50px'} />
             <CookieDescription
-                TextAlign='justify'>
+                TextAlign='justify'
+                FontSize={TextsConstants.MEDIUM_FONT_SIZE}
+                >
                 Nosso website utiliza cookies para garantir suas funcionalidades
                 básicas e para melhorar a experiência online do usuário.
                 Cookies utilizados no site são categorizados e abaixo você pode ativar ou desativar alguns deles.
                 Para Mais Detalhes, leia: &nbsp;
                 <CookieLink
-                    mainColor={props.themeConfig.primaryAccentColor}
+                    Color={props.themeConfig.primaryAccentColor}
+                    FontSize={TextsConstants.MEDIUM_FONT_SIZE}
                     href='https://abdconst.com.br/politicas-de-cookie'
                     target="_blank">
                     Politicas de Cookies
                 </CookieLink>
             </CookieDescription>
+
+            <Spacer Height="30px"/>
+
             <CookieOptionList>
+
                 <CookieToggleOption
                     name='Cookies Operacionais'
                     title='blalallalalalla'
@@ -66,6 +76,9 @@ export function CookieConfigScreen(props: { setConfig: (foo: boolean) => void, t
                     HoverBgColor={props.themeConfig.hoverPrimaryAccendColor}>
                     Aceitar Todos os Cookies
                 </CookieButton>
+
+                <Spacer Height="10px" />
+
                 <CookieButton
                     TextColor='#757575'
                     HoverBgColor={props.themeConfig.backgroundColor}
