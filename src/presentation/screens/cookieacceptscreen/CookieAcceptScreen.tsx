@@ -54,7 +54,9 @@ export function CookieAcceptScreen(props: CookieAcceptScreenType) {
                 <CookieButton
                     BackGround={props.themeConfig.primaryAccentColor}
                     TextColor={props.themeConfig.primaryTextColor}
-                    HoverBgColor={props.themeConfig.hoverPrimaryAccendColor}>
+                    HoverBgColor={props.themeConfig.hoverPrimaryAccendColor}
+                    onClick={()=>{}}
+                    >
                     {PresentationTexts.acceptPageButton}
                 </CookieButton>
 

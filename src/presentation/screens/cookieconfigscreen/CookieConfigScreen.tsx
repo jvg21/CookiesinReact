@@ -51,7 +51,7 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
                 </CookieLink>
             </CookieDescription>
 
-            <Spacer Height="30px" />
+            <Spacer Height="30px"/>
 
             <CookieOptionList>
 
@@ -74,7 +74,9 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
                 <CookieButton
                     BackGround={props.themeConfig.primaryAccentColor}
                     TextColor={props.themeConfig.primaryTextColor}
-                    HoverBgColor={props.themeConfig.hoverPrimaryAccendColor}>
+                    HoverBgColor={props.themeConfig.hoverPrimaryAccendColor}
+                    onClick = {()=>{}}
+                    >
                     {PresentationTexts.configPageAcceptButton}
                 </CookieButton>
 
