@@ -9,7 +9,7 @@ import { CookieLink } from "../../components/cookielink/CookieLink";
 import { CookieAcceptScreenType } from "../../../application/types/screens/cookieacceptscreen/CookieAcceptScreenType";
 import { Spacer } from "../../components/spacer/spacer";
 import { TextsConstants } from "../../../application/common/constants/TextsConstants";
-import PageTexts from '../../../infrastructure/services/presentationTexts.json'
+import PresentationTexts from '../../../infrastructure/services/presentationTexts.json'
 
 const CookieImageContainer = styled.div`
     & img{
@@ -20,30 +20,52 @@ const CookieImageContainer = styled.div`
 
 export function CookieAcceptScreen(props: CookieAcceptScreenType) {
     return (
-        <CookieBody 
+        <CookieBody
             cookieThemeConfig={props.themeConfig}
         >
             <CookieImageContainer >
                 <img src={Biscoito} alt="Cookie"></img>
             </CookieImageContainer>
 
-            <CookieTitle color={props.themeConfig.primaryTextColor} FontSize={TextsConstants.MEDIUM_TITLE_SIZE}>
-                {PageTexts.pageTitle}
+            <CookieTitle
+                color={props.themeConfig.primaryTextColor}
+                FontSize={TextsConstants.MEDIUM_TITLE_SIZE}>
+                {PresentationTexts.acceptPageTitle}
             </CookieTitle>
 
-            <Spacer Height="50px" Width="100%" />
+            <Spacer Height="50px" />
 
-            <CookieDescription color={props.themeConfig.primaryTextColor} TextAlign="center" FontSize={TextsConstants.MEDIUM_FONT_SIZE}>
-                {PageTexts.pageDescription}
+            <CookieDescription
+                color={props.themeConfig.primaryTextColor}
+                TextAlign="center"
+                FontSize={TextsConstants.MEDIUM_FONT_SIZE}>
+                {PresentationTexts.acceptPageDescription}
             </CookieDescription>
-            <CookieLink Color={props.themeConfig.primaryAccentColor} FontSize={TextsConstants.MEDIUM_FONT_SIZE} href="./termos" target="_blank">Termos de Uso</CookieLink>
+            <CookieLink
+                Color={props.themeConfig.primaryAccentColor}
+                FontSize={TextsConstants.MEDIUM_FONT_SIZE}
+                href="./termos" target="_blank">
+                {PresentationTexts.acceptPageLinkText}
+            </CookieLink>
 
-            <Spacer Height="1vh"/>
-            
+            <Spacer Height="1vh" />
+
             <ButtonDiv>
-                <CookieButton BackGround={props.themeConfig.primaryAccentColor} TextColor={props.themeConfig.primaryTextColor} HoverBgColor={props.themeConfig.hoverPrimaryAccendColor}>Aceitar Cookies</CookieButton>
+                <CookieButton
+                    BackGround={props.themeConfig.primaryAccentColor}
+                    TextColor={props.themeConfig.primaryTextColor}
+                    HoverBgColor={props.themeConfig.hoverPrimaryAccendColor}>
+                    {PresentationTexts.acceptPageButton}
+                </CookieButton>
+
                 <Spacer Height="10px" />
-                <CookieButton TextColor={props.themeConfig.primaryTextColor} HoverBgColor={props.themeConfig.backgroundColor} onClick={() => props.setConfig(true)}>Configurar Cookies</CookieButton>
+
+                <CookieButton
+                    TextColor={props.themeConfig.primaryTextColor}
+                    HoverBgColor={props.themeConfig.backgroundColor}
+                    onClick={() => props.setConfig(true)}>
+                    {PresentationTexts.acceptPageConfigButton}
+                </CookieButton>
             </ButtonDiv>
 
         </CookieBody>

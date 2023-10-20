@@ -1,11 +1,13 @@
 {
-    "pageTitle": "Cookies e Privaciadade",
-    "pageDescription": "Esse WebSite Utiliza Cookies Para Garantir a Melhor Experiência do Usuário.",
-    "acceptButton":"Aceitar Cookies",
-    "configButton":"Configurar Cookies",
-    "configTitle":"Sobre os Cokies Nesse Site",
-    "configDescription":"",
-    "configSaveButton":"Salvar Configurações",
-    "configAcceptButton":"Aceitar Todos os Cookies"
+    "acceptPageTitle": "Cookies e Privaciadade",
+    "acceptPageDescription": "Esse WebSite Utiliza Cookies Para Garantir a Melhor Experiência do Usuário.",
+    "acceptPageButton":"Aceitar Cookies",
+    "acceptPageLinkText":"Termos de Uso",
+    "acceptPageConfigButton":"Configurar Cookies",
+    "configPageTitle":"Sobre os Cokies Nesse Site",
+    "configPageDescription":"Nosso website utiliza cookies para garantir suas funcionalidades básicas e para melhorar a experiência online do usuário. Cookies utilizados no site são categorizados e abaixo você pode ativar ou desativar alguns deles. Para Mais Detalhes, leia: ",
+    "configPageLinkText":"Politicas de Cookies",
+    "configPageSaveButton":"Salvar Configurações",
+    "configPageAcceptButton":"Aceitar Todos os Cookies"
 
 }
