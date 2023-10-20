@@ -1,6 +1,6 @@
 import { CookieController } from "./application/controller/cookiecontroller/CookieController";
 import { CookieThemeConfig } from "./application/model/cookiethemeconfig/CookieThemeConfig";
-import { Cookie } from "./presentation/components/cookie/Cookie";
+import { CookiePage } from "./presentation/components/cookiepage/CookiePage";
 
 function App() {
 
@@ -16,7 +16,7 @@ function App() {
 
   return (
     <>
-      <Cookie
+      <CookiePage
         state={true}
         themeConfig={themeConfig}
       />

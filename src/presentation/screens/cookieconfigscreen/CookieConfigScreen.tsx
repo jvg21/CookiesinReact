@@ -4,13 +4,13 @@ import { CookieBody } from "../../components/cookiebody/CookieBody";
 import { CookieTitle } from "../../components/cookietitle/CookieTitle";
 import { CookieToggleOption } from "../../components/cookietoggleoption/CookieToggleOption";
 import { CookieDescription } from "../../components/cookiedescription/CookieDescription";
-import { CookieThemeConfig } from "../../../application/model/cookiethemeconfig/CookieThemeConfig";
 import { ButtonDiv } from "../../components/cookiebuttondiv/CookieButtonDiv";
 import { CookieButton } from "../../components/cookiebutton/CookieButton";
 import { CookieLink } from "../../components/cookielink/CookieLink";
 import { TextsConstants } from "../../../application/common/constants/TextsConstants";
 import { Spacer } from "../../components/spacer/spacer";
 import PresentationTexts from '../../../infrastructure/services/presentationTexts.json'
+import { CookieConfigScreenType } from "../../../application/types/screens/cookieconfigscreen/CookieConfigScreenType";
 
 const CookieOptionList = styled.ul`
     display: flex;
@@ -21,11 +21,11 @@ const CookieOptionList = styled.ul`
     margin-bottom: 2vh;
 `;
 
-export function CookieConfigScreen(props: { setConfig: (foo: boolean) => void, themeConfig: CookieThemeConfig }) {
+export function CookieConfigScreen(props: CookieConfigScreenType) {
 
     const [operacionais, setOperacionais] = useState(true);
     const [analiticos, setAnaliticos] = useState(true);
-
+    
     return (
         <CookieBody
             cookieThemeConfig={props.themeConfig}
@@ -56,8 +56,8 @@ export function CookieConfigScreen(props: { setConfig: (foo: boolean) => void, t
             <CookieOptionList>
 
                 <CookieToggleOption
-                    name='Cookies Operacionais'
-                    title='blalallalalalla'
+                    name={props.arrayCookie[0].name}
+                    title={props.arrayCookie[0].description}
                     switchState={operacionais}
                     switchFunction={setOperacionais}
                     cookieThemeConfig={props.themeConfig}
@@ -81,7 +81,7 @@ export function CookieConfigScreen(props: { setConfig: (foo: boolean) => void, t
                 <Spacer Height="10px" />
 
                 <CookieButton
-                    TextColor='#757575'
+                    TextColor={props.themeConfig.primaryTextColor}
                     HoverBgColor={props.themeConfig.backgroundColor}
                     onClick={() => props.setConfig(false)}>
                     {PresentationTexts.configPageSaveButton}

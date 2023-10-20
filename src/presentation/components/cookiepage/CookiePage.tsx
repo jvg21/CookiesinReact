@@ -6,6 +6,7 @@ import { CookieAcceptScreen } from "../../screens/cookieacceptscreen/CookieAccep
 import { CookieConfigScreen } from "../../screens/cookieconfigscreen/CookieConfigScreen";
 import { CookieBackground } from "../cookiebackground/CookieBackground";
 import { CookieCloseButton } from "../cookieclosebutton/CookieCloseButton";
+import { Cookie } from "../../../application/model/cookie/Cookie";
 
 const CookieCardContainer = styled.div<{ cookieThemeConfig: CookieThemeConfig; }>`
     background-color: ${(props) => props.cookieThemeConfig.backgroundColor};
@@ -34,7 +35,7 @@ const CookieCardContainer = styled.div<{ cookieThemeConfig: CookieThemeConfig; }
     
 `;
 
-export function Cookie(props: { state: boolean, themeConfig: CookieThemeConfig }) {
+export function CookiePage(props: { state: boolean, themeConfig: CookieThemeConfig }) {
 
     const [ativo, setAtivo] = useState(props.state || false);
     const [config, setConfig] = useState(false);
@@ -42,6 +43,9 @@ export function Cookie(props: { state: boolean, themeConfig: CookieThemeConfig }
     const containerRef = useRef(null);
     useOutsideClickEvent(containerRef, () => { ativo ? setAtivo(!ativo) : null });
 
+    const ck = new Array<Cookie>;
+    ck.push(new Cookie("Cookies Operacionais","Teste das decircoes",10));
+    
     return (
         <>
             {
@@ -58,6 +62,7 @@ export function Cookie(props: { state: boolean, themeConfig: CookieThemeConfig }
                                     setConfig={setConfig}
                                 />) || (config &&
                                     <CookieConfigScreen
+                                        arrayCookie={ck}
                                         themeConfig={props.themeConfig}
                                         setConfig={setConfig}
                                     />)
