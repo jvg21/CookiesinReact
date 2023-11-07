@@ -44,16 +44,16 @@ export function CookiePage(props: { state: boolean, themeConfig: CookieThemeConf
     useOutsideClickEvent(containerRef, () => { ativo ? setAtivo(!ativo) : null });
 
     const ck = new Array<Cookie>;
-    ck.push(new Cookie("Cookies Operacionais","Teste das decircoes",10));
+    ck.push(new Cookie("Cookies Operacionais", "Teste das decircoes", 10));
 
-    function saveCookie(){
+    function saveCookie() {
         console.log("salvou");
     }
-    function acceptAll(){
+    function acceptAll() {
         console.log("aceitou todos");
-        
+
     }
-    
+
     return (
         <>
             {
@@ -68,12 +68,15 @@ export function CookiePage(props: { state: boolean, themeConfig: CookieThemeConf
                                 <CookieAcceptScreen
                                     themeConfig={props.themeConfig}
                                     setConfig={setConfig}
-                                />) || (config &&
-                                    <CookieConfigScreen
-                                        arrayCookie={ck}
-                                        themeConfig={props.themeConfig}
-                                        setConfig={setConfig}
-                                    />)
+                                />
+                            ) ||
+                            (config &&
+                                <CookieConfigScreen
+                                    arrayCookie={ck}
+                                    themeConfig={props.themeConfig}
+                                    setConfig={setConfig}
+                                />
+                            )
                         }
                     </CookieCardContainer>
                 </CookieBackground>
