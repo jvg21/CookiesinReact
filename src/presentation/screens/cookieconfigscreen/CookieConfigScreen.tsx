@@ -25,7 +25,6 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
 
     const [operacionais, setOperacionais] = useState(true);
     const [analiticos, setAnaliticos] = useState(true);
-
     return (
         <CookieBody
             cookieThemeConfig={props.themeConfig}
@@ -50,7 +49,6 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
                     {PresentationTexts.configPageLinkText}
                 </CookieLink>
             </CookieDescription>
-
             <Spacer Height="30px" />
 
             <CookieOptionList>
@@ -63,8 +61,8 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
                     cookieThemeConfig={props.themeConfig}
                 />
                 <CookieToggleOption
-                    name='Cookies Analíticos'
-                    title='blalal'
+                    name={props.arrayCookie[1].name}
+                    title={props.arrayCookie[1].description}
                     switchState={analiticos}
                     switchFunction={setAnaliticos}
                     cookieThemeConfig={props.themeConfig}
@@ -90,5 +88,6 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
                 </CookieButton>
             </ButtonDiv>
         </CookieBody>
+
     )
 }

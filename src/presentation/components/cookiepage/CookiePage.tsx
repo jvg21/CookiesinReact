@@ -40,11 +40,14 @@ export function CookiePage(props: { state: boolean, themeConfig: CookieThemeConf
     const [ativo, setAtivo] = useState(props.state || false);
     const [config, setConfig] = useState(false);
 
+    
+
     const containerRef = useRef(null);
     useOutsideClickEvent(containerRef, () => { ativo ? setAtivo(!ativo) : null });
 
     const ck = new Array<Cookie>;
     ck.push(new Cookie("Cookies Operacionais", "Teste das decircoes", 10));
+    ck.push(new Cookie("Cookies Analíticos", "Teste das 2", 10));
 
     function saveCookie() {
         console.log("salvou");
