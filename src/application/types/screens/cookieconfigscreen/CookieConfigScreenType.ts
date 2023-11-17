@@ -1,8 +1,9 @@
-import { Cookie } from "../../../model/cookie/Cookie"
+import { CookieState } from "../../../model/cookiestate/CookieState"
 import { CookieThemeConfig } from "../../../model/cookiethemeconfig/CookieThemeConfig"
 
 export type CookieConfigScreenType = {
     setConfig: (foo: boolean) => void, 
-    arrayCookie : Array<Cookie>,
+    arrayCookie : Array<CookieState>,
     themeConfig: CookieThemeConfig
+    saveCookies: (foo : boolean[])=>void
 }

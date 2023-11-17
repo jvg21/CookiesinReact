@@ -23,8 +23,7 @@ const CookieOptionList = styled.ul`
 
 export function CookieConfigScreen(props: CookieConfigScreenType) {
 
-    const [operacionais, setOperacionais] = useState(true);
-    const [analiticos, setAnaliticos] = useState(true);
+    
     return (
         <CookieBody
             cookieThemeConfig={props.themeConfig}
@@ -52,7 +51,7 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
             <Spacer Height="30px" />
 
             <CookieOptionList>
-
+              
                 <CookieToggleOption
                     name={props.arrayCookie[0].name}
                     title={props.arrayCookie[0].description}
@@ -60,13 +59,7 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
                     switchFunction={setOperacionais}
                     cookieThemeConfig={props.themeConfig}
                 />
-                <CookieToggleOption
-                    name={props.arrayCookie[1].name}
-                    title={props.arrayCookie[1].description}
-                    switchState={analiticos}
-                    switchFunction={setAnaliticos}
-                    cookieThemeConfig={props.themeConfig}
-                />
+              
             </CookieOptionList>
             <ButtonDiv>
                 <CookieButton

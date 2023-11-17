@@ -3,6 +3,7 @@ export class Cookie{
     private _description : string = "";
     private _validity : number;
 
+
     constructor(name:string,description : string,validityTime : number){
         this._name = name,
         this._description = description;

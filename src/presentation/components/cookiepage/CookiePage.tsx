@@ -7,6 +7,7 @@ import { CookieConfigScreen } from "../../screens/cookieconfigscreen/CookieConfi
 import { CookieBackground } from "../cookiebackground/CookieBackground";
 import { CookieCloseButton } from "../cookieclosebutton/CookieCloseButton";
 import { Cookie } from "../../../application/model/cookie/Cookie";
+import { CookieState } from "../../../application/model/cookiestate/CookieState";
 
 const CookieCardContainer = styled.div<{ cookieThemeConfig: CookieThemeConfig; }>`
     background-color: ${(props) => props.cookieThemeConfig.backgroundColor};
@@ -37,24 +38,25 @@ const CookieCardContainer = styled.div<{ cookieThemeConfig: CookieThemeConfig; }
 
 export function CookiePage(props: { state: boolean, themeConfig: CookieThemeConfig }) {
 
-    const [ativo, setAtivo] = useState(props.state || false);
-    const [config, setConfig] = useState(false);
-
-    
-
+    const [ativo, setAtivo] = useState(props.state || false); //// modal
+    const [config, setConfig] = useState(false); /// pagina de config
     const containerRef = useRef(null);
     useOutsideClickEvent(containerRef, () => { ativo ? setAtivo(!ativo) : null });
 
-    const ck = new Array<Cookie>;
-    ck.push(new Cookie("Cookies Operacionais", "Teste das decircoes", 10));
-    ck.push(new Cookie("Cookies Analíticos", "Teste das 2", 10));
+    const [cookies, setCookiesArray] = useState<CookieState[]>([]);
+
+    function setCookies(cookie:Cookie){
+        cookies.push(new CookieState(cookie))
+    }
 
     function saveCookie() {
-        console.log("salvou");
+        for(var i = 0;i<cookies.length;i++){
+            console.log(cookies[i]);
+        }
     }
+
     function acceptAll() {
         console.log("aceitou todos");
-
     }
 
     return (
@@ -71,13 +73,15 @@ export function CookiePage(props: { state: boolean, themeConfig: CookieThemeConf
                                 <CookieAcceptScreen
                                     themeConfig={props.themeConfig}
                                     setConfig={setConfig}
+                                    saveCookies={saveCookie}
                                 />
                             ) ||
                             (config &&
                                 <CookieConfigScreen
-                                    arrayCookie={ck}
+                                    arrayCookie={cookies}
                                     themeConfig={props.themeConfig}
                                     setConfig={setConfig}
+                                    saveCookies={saveCookie}
                                 />
                             )
                         }
