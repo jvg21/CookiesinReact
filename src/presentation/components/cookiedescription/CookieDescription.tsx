@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const CookieDescription = styled.p<{ FontSize: string, TextAlign?: string }>`
-    font-size: ${props => props.FontSize };
-    text-align: ${props => props.TextAlign ? props.TextAlign : "left"};
+export const CookieDescription = styled.p<{ fontsize: string, textalign?: string }>`
+    font-size: ${props => props.fontsize };
+    text-align: ${props => props.textalign ? props.textalign : "left"};
     color: ${(props) => props.color};
 `;

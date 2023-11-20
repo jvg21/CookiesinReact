@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { CookieThemeConfig } from "../../../application/model/cookiethemeconfig/CookieThemeConfig";
 
-export const CookieBackground = styled.div<{ cookieThemeConfig: CookieThemeConfig; }>`
-    background-color: ${(props) => props.cookieThemeConfig.backgroundCardColor};
+export const CookieBackground = styled.div<{ cookiethemeconfig: CookieThemeConfig; }>`
+    background-color: ${(props) => props.cookiethemeconfig.backgroundCardColor};
     position: fixed;
     display: flex;
     justify-content: center;

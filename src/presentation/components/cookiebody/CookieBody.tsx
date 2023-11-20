@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { CookieThemeConfig } from "../../../application/model/cookiethemeconfig/CookieThemeConfig";
 
-export const CookieBody = styled.div<{ cookieThemeConfig: CookieThemeConfig }>`
+export const CookieBody = styled.div<{ cookiethemeconfig: CookieThemeConfig }>`
     display: flex;
     justify-content: start;
     align-items: center;
@@ -13,12 +13,12 @@ export const CookieBody = styled.div<{ cookieThemeConfig: CookieThemeConfig }>`
     
     /* SCROLLBAR MOD */
         &::-webkit-scrollbar {
-            background: ${(props) => props.cookieThemeConfig.backgroundColor}; //fundo
+            background: ${(props) => props.cookiethemeconfig.backgroundColor}; //fundo
             width: 3px;
             height: 6px;
         }
 
         &::-webkit-scrollbar-thumb {
-            background: ${(props) => props.cookieThemeConfig.primaryAccentColor}; //barra
+            background: ${(props) => props.cookiethemeconfig.primaryAccentColor}; //barra
         }
 `;

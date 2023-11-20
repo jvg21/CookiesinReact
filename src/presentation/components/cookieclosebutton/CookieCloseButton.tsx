@@ -8,7 +8,7 @@ const CookieExitButtonContainer = styled.div`
     right: 1.5vw;
 `;
 
-const CookieCloseButtonElement = styled.button<{ buttonHoverColor: string }>`
+const CookieCloseButtonElement = styled.button<{ buttonhovercolor: string }>`
     color: gray;
     font-size: 28px;
     border: none;
@@ -16,7 +16,7 @@ const CookieCloseButtonElement = styled.button<{ buttonHoverColor: string }>`
     transition: ease-in-out .25s;
 
     &:hover {
-        color: ${(props) => props.buttonHoverColor};
+        color: ${(props) => props.buttonhovercolor};
     }
 `;
 
@@ -24,7 +24,7 @@ export function CookieCloseButton(props: CookieCloseButtonType) {
     return (
         <CookieExitButtonContainer>
             <CookieCloseButtonElement
-                buttonHoverColor={props.themeConfig.primaryAccentColor} 
+                buttonhovercolor={props.themeConfig.primaryAccentColor} 
                 onClick={() => props.setActive(!props.isActive)}
             >
                 <RxCross2 />

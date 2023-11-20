@@ -17,11 +17,10 @@ const CookieImageContainer = styled.div`
         width: 160px;
     }
 `;
-
 export function CookieAcceptScreen(props: CookieAcceptScreenType) {
     return (
         <CookieBody
-            cookieThemeConfig={props.themeConfig}
+            cookiethemeconfig={props.themeConfig}
         >
             <CookieImageContainer >
                 <img src={Biscoito} alt="Cookie"></img>
@@ -29,42 +28,42 @@ export function CookieAcceptScreen(props: CookieAcceptScreenType) {
 
             <CookieTitle
                 color={props.themeConfig.primaryTextColor}
-                FontSize={TextsConstants.MEDIUM_TITLE_SIZE}>
+                fontsize={TextsConstants.MEDIUM_TITLE_SIZE}>
                 {PresentationTexts.acceptPageTitle}
             </CookieTitle>
 
-            <Spacer Height="50px" />
+            <Spacer height="50px" />
 
             <CookieDescription
                 color={props.themeConfig.primaryTextColor}
-                TextAlign="center"
-                FontSize={TextsConstants.MEDIUM_FONT_SIZE}>
+                textalign="center"
+                fontsize={TextsConstants.MEDIUM_FONT_SIZE}>
                 {PresentationTexts.acceptPageDescription}
             </CookieDescription>
             <CookieLink
-                Color={props.themeConfig.primaryAccentColor}
-                FontSize={TextsConstants.MEDIUM_FONT_SIZE}
+                color={props.themeConfig.primaryAccentColor}
+                fontsize={TextsConstants.MEDIUM_FONT_SIZE}
                 href="./termos" target="_blank">
                 {PresentationTexts.acceptPageLinkText}
             </CookieLink>
 
-            <Spacer Height="1vh" />
+            <Spacer height="1vh" />
 
             <ButtonDiv>
                 <CookieButton
-                    BackGround={props.themeConfig.primaryAccentColor}
-                    TextColor={props.themeConfig.primaryTextColor}
-                    HoverBgColor={props.themeConfig.hoverPrimaryAccendColor}
-                    onClick={() => { }}
+                    background={props.themeConfig.primaryAccentColor}
+                    textcolor={props.themeConfig.primaryTextColor}
+                    hoverbgcolor={props.themeConfig.hoverPrimaryAccendColor}
+                    onClick={() => props.saveCookies()}
                 >
                     {PresentationTexts.acceptPageButton}
                 </CookieButton>
 
-                <Spacer Height="10px" />
+                <Spacer height="10px" />
 
                 <CookieButton
-                    TextColor={props.themeConfig.primaryTextColor}
-                    HoverBgColor={props.themeConfig.backgroundColor}
+                    textcolor={props.themeConfig.primaryTextColor}
+                    hoverbgcolor={props.themeConfig.backgroundColor}
                     onClick={() => props.setConfig(true)}>
                     {PresentationTexts.acceptPageConfigButton}
                 </CookieButton>

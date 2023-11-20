@@ -9,8 +9,8 @@ import { CookieCloseButton } from "../cookieclosebutton/CookieCloseButton";
 import { Cookie } from "../../../application/model/cookie/Cookie";
 import { CookieState } from "../../../application/model/cookiestate/CookieState";
 
-const CookieCardContainer = styled.div<{ cookieThemeConfig: CookieThemeConfig; }>`
-    background-color: ${(props) => props.cookieThemeConfig.backgroundColor};
+const CookieCardContainer = styled.div<{ cookiethemeconfig: CookieThemeConfig; }>`
+    background-color: ${(props) => props.cookiethemeconfig.backgroundColor};
     position:relative;
     
     display:flex;
@@ -24,20 +24,15 @@ const CookieCardContainer = styled.div<{ cookieThemeConfig: CookieThemeConfig; }
     border-radius: 15px;
     box-shadow: 3px 3px 15px -3px rgba(0,0,0,0.75);
     transition: all 1.2s ease;
-    
-
     @media screen and (max-width: 450px) {
         margin: 0 3vw;
     }
-
     @media screen and (max-height: 450px) {
         margin-top: 17.5rem
     }
-    
 `;
 
 export function CookiePage(props: { state: boolean, themeConfig: CookieThemeConfig }) {
-
     const [ativo, setAtivo] = useState(props.state || false); //// modal
     const [config, setConfig] = useState(false); /// pagina de config
     const containerRef = useRef(null);
@@ -45,27 +40,20 @@ export function CookiePage(props: { state: boolean, themeConfig: CookieThemeConf
 
     const [cookies, setCookiesArray] = useState<CookieState[]>([]);
 
-    function setCookies(cookie:Cookie){
+    function setCookies(cookie: Cookie) {
         cookies.push(new CookieState(cookie))
     }
-
     function saveCookie() {
-        for(var i = 0;i<cookies.length;i++){
-            console.log(cookies[i]);
-        }
+        console.log(cookies);
     }
-
-    function acceptAll() {
-        console.log("aceitou todos");
-    }
-
+    useRef(setCookies(new Cookie("teste1","teste01",10)))
     return (
         <>
             {
                 ativo &&
-                <CookieBackground cookieThemeConfig={props.themeConfig}>
+                <CookieBackground cookiethemeconfig={props.themeConfig}>
                     <CookieCardContainer
-                        cookieThemeConfig={props.themeConfig}
+                        cookiethemeconfig={props.themeConfig}
                         ref={containerRef}>
                         <CookieCloseButton themeConfig={props.themeConfig} isActive={ativo} setActive={setAtivo} />
                         {
@@ -91,3 +79,4 @@ export function CookiePage(props: { state: boolean, themeConfig: CookieThemeConf
         </>
     )
 }
+

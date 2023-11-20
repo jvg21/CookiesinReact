@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const CookieButton = styled.button<{ BackGround?: string, TextColor?: string, HoverBgColor?: string,HoverTextColor?:string}>`
-    background-color: ${props => props.BackGround ? props.BackGround : "white"};
-    color: ${props => props.TextColor ? props.TextColor : "black"};
+export const CookieButton = styled.button<{ background?: string, textcolor?: string, hoverbgcolor?: string,hovertextcolor?:string}>`
+    background-color: ${props => props.background ? props.background : "white"};
+    color: ${props => props.textcolor ? props.textcolor : "black"};
     width: 80%;
     height: 40px;
     border: none;
@@ -15,7 +15,7 @@ export const CookieButton = styled.button<{ BackGround?: string, TextColor?: str
     overflow: hidden;
 
     &:hover{
-        background-color: ${props => props.HoverBgColor ? props.HoverBgColor : " "};
-        color: ${props => props.HoverTextColor ? props.HoverTextColor : " "};
+        background-color: ${props => props.hoverbgcolor ? props.hoverbgcolor : " "};
+        color: ${props => props.hovertextcolor ? props.hovertextcolor : " "};
     }
 `;

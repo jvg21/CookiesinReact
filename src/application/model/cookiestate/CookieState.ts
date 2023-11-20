@@ -7,19 +7,25 @@ export class CookieState{
     constructor(cookie :Cookie){
         this._cookie = cookie;
     }
-
-
-    public get cookie(): Cookie {
+    public getCookie(): Cookie {
         return this._cookie;
     }
-    public set cookie(value: Cookie) {
+    public setCookie(value: Cookie) {
         this._cookie = value;
     }
-    public get state(): boolean {
+    public getState(): boolean {
         return this._state;
     }
-    public set state(value: boolean) {
+    public setState(value: boolean) {
         this._state = value;
+    }
+
+    public changeState(){
+        if(this.getState()==true){
+            this.setState(false)
+        }else{
+            this.setState(true)
+        }
     }
 
 
