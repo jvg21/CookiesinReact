@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useState } from "react";
 import { CookieBody } from "../../components/cookiebody/CookieBody";
 import { CookieTitle } from "../../components/cookietitle/CookieTitle";
 import { CookieToggleOption } from "../../components/cookietoggleoption/CookieToggleOption";
@@ -22,8 +21,8 @@ const CookieOptionList = styled.ul`
 `;
 
 export function CookieConfigScreen(props: CookieConfigScreenType) {
-
     
+
     return (
         <CookieBody
             cookiethemeconfig={props.themeConfig}
@@ -43,7 +42,7 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
                 <CookieLink
                     color={props.themeConfig.primaryAccentColor}
                     fontsize={TextsConstants.MEDIUM_FONT_SIZE}
-                    href='https://abdconst.com.br/politicas-de-cookie'
+                    href={PresentationTexts.UrlPoliticasCookies}
                     target="_blank">
                     {PresentationTexts.configPageLinkText}
                 </CookieLink>
@@ -51,14 +50,21 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
             <Spacer height="30px" />
 
             <CookieOptionList>
-              
-                <CookieToggleOption
-                    name={props.arrayCookie[0].getCookie().name}
-                    title={props.arrayCookie[0].getCookie().description}
-                    switchState={props.arrayCookie[0].getState()}
-                    switchFunction={()=>{}}
-                    cookieThemeConfig={props.themeConfig}
-                />
+                {
+                    props.cookieInfo.map((x) => {
+                        return (
+                            <CookieToggleOption
+                                id={x.id}
+                                name={x.name}
+                                title={x.description}
+                                switchState={props.cookieState[x.id]}
+                                switchFunction={props.changeCookieStateFunction}
+                                cookieThemeConfig={props.themeConfig}
+                            />
+                        )
+                    })
+                }
+
             </CookieOptionList>
 
             <ButtonDiv>
@@ -66,13 +72,11 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
                     background={props.themeConfig.primaryAccentColor}
                     textcolor={props.themeConfig.primaryTextColor}
                     hoverbgcolor={props.themeConfig.hoverPrimaryAccendColor}
-                    onClick={() => { }}
+                    onClick={() => props.setAllCokies() }
                 >
                     {PresentationTexts.configPageAcceptButton}
                 </CookieButton>
-
                 <Spacer height="10px" />
-
                 <CookieButton
                     textcolor={props.themeConfig.primaryTextColor}
                     hoverbgcolor={props.themeConfig.backgroundColor}
@@ -81,6 +85,5 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
                 </CookieButton>
             </ButtonDiv>
         </CookieBody>
-
     )
 }

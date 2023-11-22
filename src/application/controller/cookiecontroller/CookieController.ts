@@ -10,11 +10,8 @@ export class CookieController{
     public getListarCookies():Cookie[]{
         return this._cookieValidation.getListarCookies();
     }
-    public salvarCookies(){
-        console.log("Oi");
+    public salvar(cookie:Cookie){
+        this._cookieValidation.salvar(cookie);
     }
-    public deletarCookies(){
-        console.log("return tchau");
-        
-    }
+   
 }

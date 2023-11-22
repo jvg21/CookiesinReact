@@ -19,21 +19,16 @@ const CookieImageContainer = styled.div`
 `;
 export function CookieAcceptScreen(props: CookieAcceptScreenType) {
     return (
-        <CookieBody
-            cookiethemeconfig={props.themeConfig}
-        >
-            <CookieImageContainer >
+        <CookieBody cookiethemeconfig={props.themeConfig}>
+            <CookieImageContainer>
                 <img src={Biscoito} alt="Cookie"></img>
             </CookieImageContainer>
-
             <CookieTitle
                 color={props.themeConfig.primaryTextColor}
                 fontsize={TextsConstants.MEDIUM_TITLE_SIZE}>
                 {PresentationTexts.acceptPageTitle}
             </CookieTitle>
-
-            <Spacer height="50px" />
-
+            <Spacer height="50px"/>
             <CookieDescription
                 color={props.themeConfig.primaryTextColor}
                 textalign="center"
@@ -46,21 +41,17 @@ export function CookieAcceptScreen(props: CookieAcceptScreenType) {
                 href="./termos" target="_blank">
                 {PresentationTexts.acceptPageLinkText}
             </CookieLink>
-
-            <Spacer height="1vh" />
-
+            <Spacer height="1vh"/>
             <ButtonDiv>
                 <CookieButton
                     background={props.themeConfig.primaryAccentColor}
                     textcolor={props.themeConfig.primaryTextColor}
                     hoverbgcolor={props.themeConfig.hoverPrimaryAccendColor}
-                    onClick={() => props.saveCookies()}
+                    onClick={() => props.acceptCookies()}
                 >
                     {PresentationTexts.acceptPageButton}
                 </CookieButton>
-
-                <Spacer height="10px" />
-
+                <Spacer height="10px"/>
                 <CookieButton
                     textcolor={props.themeConfig.primaryTextColor}
                     hoverbgcolor={props.themeConfig.backgroundColor}
@@ -68,7 +59,6 @@ export function CookieAcceptScreen(props: CookieAcceptScreenType) {
                     {PresentationTexts.acceptPageConfigButton}
                 </CookieButton>
             </ButtonDiv>
-
         </CookieBody>
     )
 }

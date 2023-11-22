@@ -8,6 +8,7 @@
     "configPageDescription":"Nosso website utiliza cookies para garantir suas funcionalidades básicas e para melhorar a experiência online do usuário. Cookies utilizados no site são categorizados e abaixo você pode ativar ou desativar alguns deles. Para Mais Detalhes, leia: ",
     "configPageLinkText":"Politicas de Cookies",
     "configPageSaveButton":"Salvar Configurações",
-    "configPageAcceptButton":"Aceitar Todos os Cookies"
+    "configPageAcceptButton":"Ativar Todos os Cookies",
+    "UrlPoliticasCookies":"https://abdconst.com.br/politicas-de-cookie"
 
 }

@@ -46,16 +46,16 @@ const Input = styled.input<{ inputColor: string; }>`
   
 `;
 
-export function ToggleSwitch(props: { checked: boolean, setChecked?: (foo: boolean) => void; cookieThemeConfig: CookieThemeConfig}) {
+export function ToggleSwitch(props: { checked: boolean,id:number, setChecked?: (id:number,foo: boolean) => void; cookiethemeconfig: CookieThemeConfig}) {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (props.setChecked) {
-      (props.setChecked(e.target.checked))
+      (props.setChecked(props.id,e.target.checked))
     }
   };
 
   return (
     <Label>
-      <Input inputColor={props.cookieThemeConfig.primaryAccentColor} checked={props.checked} type="checkbox" onChange={handleChange} />
+      <Input inputColor={props.cookiethemeconfig.primaryAccentColor} checked={props.checked} type="checkbox" onChange={handleChange} />
       <Switch />
     </Label>
   );

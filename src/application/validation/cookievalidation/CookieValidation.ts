@@ -10,4 +10,7 @@ export class CookieValidation{
     public getListarCookies():Cookie[]{
         return this._cookieRepository.getListarCookies();
     }
+    public salvar(cookie:Cookie){
+        this._cookieRepository.salvar(cookie);
+    }
 }

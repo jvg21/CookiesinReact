@@ -6,13 +6,13 @@ import { CookieAcceptScreen } from "../../screens/cookieacceptscreen/CookieAccep
 import { CookieConfigScreen } from "../../screens/cookieconfigscreen/CookieConfigScreen";
 import { CookieBackground } from "../cookiebackground/CookieBackground";
 import { CookieCloseButton } from "../cookieclosebutton/CookieCloseButton";
+import { CookieController } from "../../../application/controller/cookiecontroller/CookieController";
+import { CookieInfo } from "../../../application/model/cookieInfo/CookieInfo";
 import { Cookie } from "../../../application/model/cookie/Cookie";
-import { CookieState } from "../../../application/model/cookiestate/CookieState";
 
 const CookieCardContainer = styled.div<{ cookiethemeconfig: CookieThemeConfig; }>`
     background-color: ${(props) => props.cookiethemeconfig.backgroundColor};
     position:relative;
-    
     display:flex;
     justify-content: center;
     align-items: center;
@@ -31,22 +31,45 @@ const CookieCardContainer = styled.div<{ cookiethemeconfig: CookieThemeConfig; }
         margin-top: 17.5rem
     }
 `;
-
-export function CookiePage(props: { state: boolean, themeConfig: CookieThemeConfig }) {
+export function CookiePage(props: { state: boolean, themeConfig: CookieThemeConfig, cookieController: CookieController, cookieInfo: CookieInfo[] }) {
     const [ativo, setAtivo] = useState(props.state || false); //// modal
     const [config, setConfig] = useState(false); /// pagina de config
     const containerRef = useRef(null);
     useOutsideClickEvent(containerRef, () => { ativo ? setAtivo(!ativo) : null });
 
-    const [cookies, setCookiesArray] = useState<CookieState[]>([]);
+    let cookieInfo = props.cookieInfo;
+    const [CookieActive, setCookieActive] = useState<boolean[]>(fillCookieActive());
 
-    function setCookies(cookie: Cookie) {
-        cookies.push(new CookieState(cookie))
+    function setCookieValue(id: number, value: boolean) {
+        let cookieChange: boolean[] = [];
+        for (let i = 0; i < CookieActive.length; i++) {
+            if (i == id) {
+                cookieChange.push(value)
+            } else {
+                cookieChange.push(CookieActive[i])
+            }
+        }
+        setCookieActive(cookieChange);
     }
-    function saveCookie() {
-        console.log(cookies);
+
+    function fillCookieActive() {
+        let CookieActiveArray: boolean[] = []
+        props.cookieInfo.forEach(() => {
+            CookieActiveArray.push(true)
+        })
+        return CookieActiveArray;
     }
-    useRef(setCookies(new Cookie("teste1","teste01",10)))
+
+    function accept() {
+        for (let i = 0; i < cookieInfo.length; i++) {
+            //console.log(new Cookie(cookieInfo[i].id, cookieInfo[i].name, cookieInfo[i].description, cookieInfo[i].validity, CookieActive[i]));
+            props.cookieController.salvar(new Cookie(cookieInfo[i].id, cookieInfo[i].name, cookieInfo[i].description, cookieInfo[i].validity, CookieActive[i]))
+        }
+    }
+    function acceptAll() {
+        setCookieActive(fillCookieActive())
+        setConfig(false);
+    }
     return (
         <>
             {
@@ -61,15 +84,18 @@ export function CookiePage(props: { state: boolean, themeConfig: CookieThemeConf
                                 <CookieAcceptScreen
                                     themeConfig={props.themeConfig}
                                     setConfig={setConfig}
-                                    saveCookies={saveCookie}
+                                    acceptCookies={accept}
                                 />
-                            ) ||
+                            )
+                            ||
                             (config &&
                                 <CookieConfigScreen
-                                    arrayCookie={cookies}
                                     themeConfig={props.themeConfig}
                                     setConfig={setConfig}
-                                    saveCookies={saveCookie}
+                                    setAllCokies={acceptAll}
+                                    cookieInfo={cookieInfo}
+                                    cookieState={CookieActive}
+                                    changeCookieStateFunction={setCookieValue}
                                 />
                             )
                         }
