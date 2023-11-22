@@ -25,19 +25,19 @@ export function CookieAcceptScreen(props: CookieAcceptScreenType) {
             </CookieImageContainer>
             <CookieTitle
                 color={props.themeConfig.primaryTextColor}
-                fontsize={TextsConstants.MEDIUM_TITLE_SIZE}>
+                fontSize={TextsConstants.MEDIUM_TITLE_SIZE}>
                 {PresentationTexts.acceptPageTitle}
             </CookieTitle>
             <Spacer height="50px"/>
             <CookieDescription
                 color={props.themeConfig.primaryTextColor}
                 textalign="center"
-                fontsize={TextsConstants.MEDIUM_FONT_SIZE}>
+                fontSize={TextsConstants.MEDIUM_FONT_SIZE}>
                 {PresentationTexts.acceptPageDescription}
             </CookieDescription>
             <CookieLink
                 color={props.themeConfig.primaryAccentColor}
-                fontsize={TextsConstants.MEDIUM_FONT_SIZE}
+                fontSize={TextsConstants.MEDIUM_FONT_SIZE}
                 href="./termos" target="_blank">
                 {PresentationTexts.acceptPageLinkText}
             </CookieLink>

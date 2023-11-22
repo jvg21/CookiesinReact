@@ -3,13 +3,13 @@
     {
         "id": 0,
         "name": "Cookies Analiticos",
-        "descriptions": "teste blawlallawlal",
+        "descriptions": "São os que viabilizam o ato de sua navegação no Portal ABDConst, de modo que as funcionalidades mais básicas lhe sejam oferecidas.",
         "expireTime": 10
     },
     {
         "id": 1,
         "name": "Cookies Operacionais",
-        "descriptions": "teste blawlallawlal2",
+        "descriptions": "São aqueles dedicados a registrar os dados de uso do Portal ABDConst para que possamos aprimorá-lo futuramente, como os dados de índice de audiência da página e de fontes de tráfego.",
         "expireTime": 10
     }
 

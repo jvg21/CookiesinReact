@@ -32,12 +32,12 @@ const Switch = styled.div`
   }
 `;
 
-const Input = styled.input<{ inputColor: string; }>`
+const Input = styled.input<{ inputcolor: string; }>`
   opacity: 0;
   position: absolute;
 
   &:checked + ${Switch} {
-    background: ${(props) => props.inputColor};
+    background: ${(props) => props.inputcolor};
 
     &:before {
       transform: translate(17.5px, -50%);
@@ -55,7 +55,7 @@ export function ToggleSwitch(props: { checked: boolean,id:number, setChecked?: (
 
   return (
     <Label>
-      <Input inputColor={props.cookiethemeconfig.primaryAccentColor} checked={props.checked} type="checkbox" onChange={handleChange} />
+      <Input inputcolor={props.cookiethemeconfig.primaryAccentColor} checked={props.checked} type="checkbox" onChange={handleChange} />
       <Switch />
     </Label>
   );

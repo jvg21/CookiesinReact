@@ -28,7 +28,7 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
             cookiethemeconfig={props.themeConfig}
         >
             <CookieTitle
-                fontsize={TextsConstants.MEDIUM_TITLE_SIZE}>
+                fontSize={TextsConstants.MEDIUM_TITLE_SIZE}>
                 {PresentationTexts.configPageTitle}
             </CookieTitle>
 
@@ -36,12 +36,12 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
 
             <CookieDescription
                 textalign='justify'
-                fontsize={TextsConstants.MEDIUM_FONT_SIZE}
+                fontSize={TextsConstants.MEDIUM_FONT_SIZE}
             >
                 {PresentationTexts.configPageDescription}
                 <CookieLink
                     color={props.themeConfig.primaryAccentColor}
-                    fontsize={TextsConstants.MEDIUM_FONT_SIZE}
+                    fontSize={TextsConstants.MEDIUM_FONT_SIZE}
                     href={PresentationTexts.UrlPoliticasCookies}
                     target="_blank">
                     {PresentationTexts.configPageLinkText}
@@ -51,9 +51,10 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
 
             <CookieOptionList>
                 {
-                    props.cookieInfo.map((x) => {
+                    props.cookieInfo.map((x,index) => {
                         return (
                             <CookieToggleOption
+                                key={index}
                                 id={x.id}
                                 name={x.name}
                                 title={x.description}

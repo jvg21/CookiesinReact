@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const CookieTitle = styled.h2<{fontsize:string}>`
-    font-size: ${(props) =>props.fontsize};
+export const CookieTitle = styled.h2<{fontSize:string}>`
+    font-size: ${(props) =>props.fontSize};
     text-align: center;
     color: ${(props) => props.color};
 `;
