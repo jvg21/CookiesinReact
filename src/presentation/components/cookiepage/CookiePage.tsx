@@ -33,6 +33,7 @@ const CookieCardContainer = styled.div<{ cookiethemeconfig: CookieThemeConfig; }
 export function CookiePage(props: { state: boolean, themeConfig: CookieThemeConfig, cookieController: CookieController }) {
     const [ativo, setAtivo] = useState(props.state || false); //// modal
     const [config, setConfig] = useState(false); /// pagina de config
+
     const containerRef = useRef(null);
     useOutsideClickEvent(containerRef, () => { ativo ? setAtivo(!ativo) : null });
 
@@ -60,16 +61,13 @@ export function CookiePage(props: { state: boolean, themeConfig: CookieThemeConf
     }
 
     function accept() {
-        for (let i = 0; i <cookieInfo.length; i++) {
+        for (let i = 0; i < cookieInfo.length; i++) {
             console.log(CookieActive);
-            if(CookieActive[i]){
-                for (let cookie of cookieInfo[i].cookies){
-                    props.cookieController.salvar(new Cookie(cookie.id,cookie.name,cookie.content,cookie.validity))
+            if (CookieActive[i]) {
+                for (let cookie of cookieInfo[i].cookies) {
+                    props.cookieController.salvar(new Cookie(cookie.id, cookie.name, cookie.content, cookie.validity))
                 }
             }
-            
-                
-                //props.cookieController.salvar(new Cookie(cookieInfo[i].id, cookieInfo[i].name, cookieInfo[i].description, cookieInfo[i].validity, true))
         }
         setAtivo(false)
     }
@@ -77,7 +75,6 @@ export function CookiePage(props: { state: boolean, themeConfig: CookieThemeConf
         setCookieActive(fillCookieActive())
         setConfig(false);
     }
-    
     return (
         <>
             {

@@ -17,16 +17,15 @@ const CookieImageContainer = styled.div`
         width: 160px;
     }
 `;
+
 export function CookieAcceptScreen(props: CookieAcceptScreenType) {
     function acceptButtonTextChange(): string {
         for (let bool of props.cookieState) {
             if (bool == true) {
                 return PresentationTexts.acceptPageButton;
-
             }
         }
         return PresentationTexts.acceptPageRejectButton;
-
     }
     return (
         <CookieBody cookiethemeconfig={props.themeConfig}>
@@ -38,7 +37,7 @@ export function CookieAcceptScreen(props: CookieAcceptScreenType) {
                 fontSize={TextsConstants.MEDIUM_TITLE_SIZE}>
                 {PresentationTexts.acceptPageTitle}
             </CookieTitle>
-            <Spacer height="50px" />
+            <Spacer height="50px"/>
             <CookieDescription
                 color={props.themeConfig.primaryTextColor}
                 textalign="center"
@@ -51,7 +50,7 @@ export function CookieAcceptScreen(props: CookieAcceptScreenType) {
                 href="./termos" target="_blank">
                 {PresentationTexts.acceptPageLinkText}
             </CookieLink>
-            <Spacer height="1vh" />
+            <Spacer height="1vh"/>
             <ButtonDiv>
                 <CookieButton
                     background={props.themeConfig.primaryAccentColor}

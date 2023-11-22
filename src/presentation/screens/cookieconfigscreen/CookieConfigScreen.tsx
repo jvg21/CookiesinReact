@@ -21,7 +21,6 @@ const CookieOptionList = styled.ul`
 `;
 
 export function CookieConfigScreen(props: CookieConfigScreenType) {
-    
 
     return (
         <CookieBody
@@ -51,7 +50,7 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
 
             <CookieOptionList>
                 {
-                    props.cookieInfo.map((x,index) => {
+                    props.cookieInfo.map((x, index) => {
                         return (
                             <CookieToggleOption
                                 key={index}
@@ -61,11 +60,9 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
                                 switchState={props.cookieState[x.id]}
                                 switchFunction={props.changeCookieStateFunction}
                                 cookieThemeConfig={props.themeConfig}
-                            />
-                        )
+                            />)
                     })
                 }
-
             </CookieOptionList>
 
             <ButtonDiv>
@@ -73,11 +70,11 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
                     background={props.themeConfig.primaryAccentColor}
                     textcolor={props.themeConfig.primaryTextColor}
                     hoverbgcolor={props.themeConfig.hoverPrimaryAccendColor}
-                    onClick={() => props.setAllCokies() }
+                    onClick={() => props.setAllCokies()}
                 >
                     {PresentationTexts.configPageAcceptButton}
                 </CookieButton>
-                <Spacer height="10px" />
+                <Spacer height="10px"/>
                 <CookieButton
                     textcolor={props.themeConfig.primaryTextColor}
                     hoverbgcolor={props.themeConfig.backgroundColor}

@@ -44,7 +44,7 @@
             {
                 "id": 4,
                 "name": "F1START",
-                "expireTime": 1,
+                "expireTime": 9.125,
                 "content": "F1START"
             }
         ]
