@@ -4,5 +4,6 @@ export type CookieAcceptScreenType = {
     setConfig: (foo: boolean) => void, 
     themeConfig: CookieThemeConfig;
     acceptCookies: () => void;
+    cookieState:boolean[];
 
 }

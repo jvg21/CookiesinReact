@@ -18,6 +18,14 @@ const CookieImageContainer = styled.div`
     }
 `;
 export function CookieAcceptScreen(props: CookieAcceptScreenType) {
+    function acceptButtonTextChange():string{
+        for(let bool of props.cookieState){
+            if(bool == false){
+                return PresentationTexts.acceptPageRejectButton;
+            }
+        }
+        return PresentationTexts.acceptPageButton;
+    }
     return (
         <CookieBody cookiethemeconfig={props.themeConfig}>
             <CookieImageContainer>
@@ -49,7 +57,7 @@ export function CookieAcceptScreen(props: CookieAcceptScreenType) {
                     hoverbgcolor={props.themeConfig.hoverPrimaryAccendColor}
                     onClick={() => props.acceptCookies()}
                 >
-                    {PresentationTexts.acceptPageButton}
+                    {acceptButtonTextChange()}
                 </CookieButton>
                 <Spacer height="10px"/>
                 <CookieButton

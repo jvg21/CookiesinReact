@@ -62,10 +62,12 @@ export function CookiePage(props: { state: boolean, themeConfig: CookieThemeConf
     function accept() {
         for (let i = 0; i <cookieInfo.length; i++) {
             console.log(CookieActive);
-            
-            for (let cookie of cookieInfo[i].cookies){
-                props.cookieController.salvar(new Cookie(cookie.id,cookie.name,cookie.content,cookie.validity))
+            if(CookieActive[i]){
+                for (let cookie of cookieInfo[i].cookies){
+                    props.cookieController.salvar(new Cookie(cookie.id,cookie.name,cookie.content,cookie.validity))
+                }
             }
+            
                 
                 //props.cookieController.salvar(new Cookie(cookieInfo[i].id, cookieInfo[i].name, cookieInfo[i].description, cookieInfo[i].validity, true))
         }
@@ -91,6 +93,7 @@ export function CookiePage(props: { state: boolean, themeConfig: CookieThemeConf
                                     themeConfig={props.themeConfig}
                                     setConfig={setConfig}
                                     acceptCookies={accept}
+                                    cookieState={CookieActive}
                                 />
                             )
                             ||

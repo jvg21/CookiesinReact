@@ -13,25 +13,25 @@ function App() {
   themeConfig.primaryTextColor = '#464646';
   themeConfig.secondaryTextColor = '#000';
 
-  let activeCookiePage = true;
   let cookiecontroller = new CookieController();
 
-
- for(let category of cookiecontroller.getListarCookies()){
-    for(let cookie of category.cookies){
-      if(Cookies.get(cookie.name)){
-        activeCookiePage = false;
+  function haveActiveCookies(): boolean {
+    for (let category of cookiecontroller.getListarCookies()) {
+      for (let cookie of category.cookies) {
+        if (Cookies.get(cookie.name)) {
+          return false;
+        }
       }
     }
- }
-  // console.log(cookiecontroller.getListarCookies());
-  // console.log(activeCookiePage);
+    return true
+  }
+
   return (
     <>
-    
+
       <CookiePage
         cookieController={cookiecontroller}
-        state={activeCookiePage}
+        state={haveActiveCookies()}
         themeConfig={themeConfig}
       />
     </>
