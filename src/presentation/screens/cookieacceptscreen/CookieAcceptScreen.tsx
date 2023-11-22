@@ -18,13 +18,15 @@ const CookieImageContainer = styled.div`
     }
 `;
 export function CookieAcceptScreen(props: CookieAcceptScreenType) {
-    function acceptButtonTextChange():string{
-        for(let bool of props.cookieState){
-            if(bool == false){
-                return PresentationTexts.acceptPageRejectButton;
+    function acceptButtonTextChange(): string {
+        for (let bool of props.cookieState) {
+            if (bool == true) {
+                return PresentationTexts.acceptPageButton;
+
             }
         }
-        return PresentationTexts.acceptPageButton;
+        return PresentationTexts.acceptPageRejectButton;
+
     }
     return (
         <CookieBody cookiethemeconfig={props.themeConfig}>
@@ -36,7 +38,7 @@ export function CookieAcceptScreen(props: CookieAcceptScreenType) {
                 fontSize={TextsConstants.MEDIUM_TITLE_SIZE}>
                 {PresentationTexts.acceptPageTitle}
             </CookieTitle>
-            <Spacer height="50px"/>
+            <Spacer height="50px" />
             <CookieDescription
                 color={props.themeConfig.primaryTextColor}
                 textalign="center"
@@ -49,7 +51,7 @@ export function CookieAcceptScreen(props: CookieAcceptScreenType) {
                 href="./termos" target="_blank">
                 {PresentationTexts.acceptPageLinkText}
             </CookieLink>
-            <Spacer height="1vh"/>
+            <Spacer height="1vh" />
             <ButtonDiv>
                 <CookieButton
                     background={props.themeConfig.primaryAccentColor}
@@ -59,7 +61,7 @@ export function CookieAcceptScreen(props: CookieAcceptScreenType) {
                 >
                     {acceptButtonTextChange()}
                 </CookieButton>
-                <Spacer height="10px"/>
+                <Spacer height="10px" />
                 <CookieButton
                     textcolor={props.themeConfig.primaryTextColor}
                     hoverbgcolor={props.themeConfig.backgroundColor}
