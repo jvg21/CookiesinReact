@@ -62,14 +62,17 @@ export function CookiePage(props: { state: boolean, themeConfig: CookieThemeConf
 
     function accept() {
         for (let i = 0; i < cookieInfo.length; i++) {
-            //console.log(new Cookie(cookieInfo[i].id, cookieInfo[i].name, cookieInfo[i].description, cookieInfo[i].validity, CookieActive[i]));
-            props.cookieController.salvar(new Cookie(cookieInfo[i].id, cookieInfo[i].name, cookieInfo[i].description, cookieInfo[i].validity, CookieActive[i]))
+            if(CookieActive[i]){
+                props.cookieController.salvar(new Cookie(cookieInfo[i].id, cookieInfo[i].name, cookieInfo[i].description, cookieInfo[i].validity, true))
+            }
         }
+        setAtivo(false)
     }
     function acceptAll() {
         setCookieActive(fillCookieActive())
         setConfig(false);
     }
+    
     return (
         <>
             {
