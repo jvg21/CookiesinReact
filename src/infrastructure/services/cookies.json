@@ -1,16 +1,52 @@
 [
-
     {
         "id": 0,
         "name": "Cookies Analiticos",
         "descriptions": "São os que viabilizam o ato de sua navegação no Portal ABDConst, de modo que as funcionalidades mais básicas lhe sejam oferecidas.",
-        "expireTime": 10
+        "Cookies": [
+            {
+                "id": 0,
+                "name": "codigo_turma",
+                "expireTime": 0.084,
+                "content": "codigo_turma"
+            }
+        ]
     },
     {
         "id": 1,
         "name": "Cookies Operacionais",
         "descriptions": "São aqueles dedicados a registrar os dados de uso do Portal ABDConst para que possamos aprimorá-lo futuramente, como os dados de índice de audiência da página e de fontes de tráfego.",
-        "expireTime": 10
+        "Cookies": [
+            {
+                "id": 0,
+                "name": "_gagoogle",
+                "expireTime": 1,
+                "content": "_gagoogle"
+            },
+            {
+                "id": 1,
+                "name": "_gat",
+                "expireTime": 1,
+                "content": "_gat"
+            },
+            {
+                "id": 2,
+                "name": "_gid",
+                "expireTime": 1,
+                "content": "_gid"
+            },
+            {
+                "id": 3,
+                "name": "collect",
+                "expireTime": 1,
+                "content": "collect"
+            },
+            {
+                "id": 4,
+                "name": "F1START",
+                "expireTime": 1,
+                "content": "F1START"
+            }
+        ]
     }
-
 ]

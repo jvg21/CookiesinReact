@@ -1,8 +1,6 @@
 import { CookieController } from "./application/controller/cookiecontroller/CookieController";
 import { CookieThemeConfig } from "./application/model/cookiethemeconfig/CookieThemeConfig";
 import { CookiePage } from "./presentation/components/cookiepage/CookiePage";
-import CookieJson from './infrastructure/services/cookies.json';
-import { CookieInfo } from "./application/model/cookieInfo/CookieInfo";
 import Cookies from 'js-cookie';
 
 function App() {
@@ -17,21 +15,24 @@ function App() {
 
   let activeCookiePage = true;
   let cookiecontroller = new CookieController();
-  let cookieInfo : CookieInfo[] = [];
-  CookieJson.map((x)=>{
-    cookieInfo.push(new CookieInfo(x.id,x.name,x.descriptions,x.expireTime));
-    if(Cookies.get(x.name)){
-      activeCookiePage = false;
-    }
-  })
 
+
+ for(let category of cookiecontroller.getListarCookies()){
+    for(let cookie of category.cookies){
+      if(Cookies.get(cookie.name)){
+        activeCookiePage = false;
+      }
+    }
+ }
+  // console.log(cookiecontroller.getListarCookies());
+  // console.log(activeCookiePage);
   return (
     <>
+    
       <CookiePage
         cookieController={cookiecontroller}
         state={activeCookiePage}
         themeConfig={themeConfig}
-        cookieInfo = {cookieInfo}
       />
     </>
   )

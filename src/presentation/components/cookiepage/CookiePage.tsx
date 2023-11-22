@@ -7,7 +7,6 @@ import { CookieConfigScreen } from "../../screens/cookieconfigscreen/CookieConfi
 import { CookieBackground } from "../cookiebackground/CookieBackground";
 import { CookieCloseButton } from "../cookieclosebutton/CookieCloseButton";
 import { CookieController } from "../../../application/controller/cookiecontroller/CookieController";
-import { CookieInfo } from "../../../application/model/cookieInfo/CookieInfo";
 import { Cookie } from "../../../application/model/cookie/Cookie";
 
 const CookieCardContainer = styled.div<{ cookiethemeconfig: CookieThemeConfig; }>`
@@ -31,13 +30,13 @@ const CookieCardContainer = styled.div<{ cookiethemeconfig: CookieThemeConfig; }
         margin-top: 17.5rem
     }
 `;
-export function CookiePage(props: { state: boolean, themeConfig: CookieThemeConfig, cookieController: CookieController, cookieInfo: CookieInfo[] }) {
+export function CookiePage(props: { state: boolean, themeConfig: CookieThemeConfig, cookieController: CookieController }) {
     const [ativo, setAtivo] = useState(props.state || false); //// modal
     const [config, setConfig] = useState(false); /// pagina de config
     const containerRef = useRef(null);
     useOutsideClickEvent(containerRef, () => { ativo ? setAtivo(!ativo) : null });
 
-    let cookieInfo = props.cookieInfo;
+    let cookieInfo = props.cookieController.getListarCookies();
     const [CookieActive, setCookieActive] = useState<boolean[]>(fillCookieActive());
 
     function setCookieValue(id: number, value: boolean) {
@@ -54,17 +53,21 @@ export function CookiePage(props: { state: boolean, themeConfig: CookieThemeConf
 
     function fillCookieActive() {
         let CookieActiveArray: boolean[] = []
-        props.cookieInfo.forEach(() => {
+        cookieInfo.forEach(() => {
             CookieActiveArray.push(true)
         })
         return CookieActiveArray;
     }
 
     function accept() {
-        for (let i = 0; i < cookieInfo.length; i++) {
-            if(CookieActive[i]){
-                props.cookieController.salvar(new Cookie(cookieInfo[i].id, cookieInfo[i].name, cookieInfo[i].description, cookieInfo[i].validity, true))
+        for (let i = 0; i <cookieInfo.length; i++) {
+            console.log(CookieActive);
+            
+            for (let cookie of cookieInfo[i].cookies){
+                props.cookieController.salvar(new Cookie(cookie.id,cookie.name,cookie.content,cookie.validity))
             }
+                
+                //props.cookieController.salvar(new Cookie(cookieInfo[i].id, cookieInfo[i].name, cookieInfo[i].description, cookieInfo[i].validity, true))
         }
         setAtivo(false)
     }
