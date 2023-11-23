@@ -77,7 +77,7 @@ export const CookieProvider = ({ children }: CookieProviderProps) => {
             console.log(CookieActive);
             if (CookieActive[i]) {
                 for (let cookie of cookieInfo[i].cookies) {
-                    cookieController.salvar(new Cookie(cookie.id, cookie.name, cookie.content, cookie.validity))
+                    cookieController.salvar(new Cookie(cookie.id, cookie.name,cookie.description, cookie.content, cookie.validity))
                 }
             }
         }

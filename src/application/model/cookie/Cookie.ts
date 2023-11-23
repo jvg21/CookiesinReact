@@ -1,14 +1,17 @@
 export class Cookie{
     private _id: number;
     private _name : string = "";
+    private _description: string = "";
+    
     private _content : string = "";
     private _validity : number;
   
-    constructor(id:number,name:string,content : string,validityTime : number){
+    constructor(id:number,name:string,description:string,content : string,validityTime : number){
         this._id = id;
         this._name = name;
         this._content = content;
         this._validity = validityTime;
+        this._description = description;
     }
 
     public get id(): number {
@@ -37,6 +40,13 @@ export class Cookie{
     }
     set validity(value : number){
         this._validity = value;
+    }
+
+    public get description(): string {
+        return this._description;
+    }
+    public set description(value: string) {
+        this._description = value;
     }
 
 }
