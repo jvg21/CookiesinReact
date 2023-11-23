@@ -22,6 +22,7 @@ const CookieImageContainer = styled.div`
 
 export function CookieAcceptScreen(props: CookieAcceptScreenType) {
     const {setModalCookieConfig,CookieActive,accept} = useContext(CookieContext)
+
     function acceptButtonTextChange(): string {
         for (let bool of CookieActive) {
             if (bool == true) {

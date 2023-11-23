@@ -29,9 +29,9 @@ const CookieCardContainer = styled.div<{ cookiethemeconfig: CookieThemeConfig; }
         margin-top: 17.5rem
     }
 `;
-export function CookiePage(props: { themeConfig: CookieThemeConfig}) {
-    const {modalCookie,setModalCookie,modalCookieConfig} = useContext(CookieContext)
-    
+export function CookiePage(props: { themeConfig: CookieThemeConfig }) {
+    const { modalCookie, setModalCookie, modalCookieConfig } = useContext(CookieContext)
+
     const containerRef = useRef(null);
     useOutsideClickEvent(containerRef, () => { modalCookie ? setModalCookie(!modalCookie) : null });
 
@@ -43,18 +43,14 @@ export function CookiePage(props: { themeConfig: CookieThemeConfig}) {
                     <CookieCardContainer
                         cookiethemeconfig={props.themeConfig}
                         ref={containerRef}>
-                        <CookieCloseButton themeConfig={props.themeConfig}  />
+                        <CookieCloseButton themeConfig={props.themeConfig} />
                         {
                             (!modalCookieConfig &&
-                                <CookieAcceptScreen
-                                    themeConfig={props.themeConfig}
-                                />
+                                <CookieAcceptScreen themeConfig={props.themeConfig}/>
                             )
                             ||
                             (modalCookieConfig &&
-                                <CookieConfigScreen
-                                    themeConfig={props.themeConfig}
-                                />
+                                <CookieConfigScreen themeConfig={props.themeConfig}/>
                             )
                         }
                     </CookieCardContainer>
