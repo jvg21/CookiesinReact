@@ -2,6 +2,5 @@ import { CookieThemeConfig } from "../../../model/cookiethemeconfig/CookieThemeC
 
 export type CookieAcceptScreenType = { 
     themeConfig: CookieThemeConfig;
-    acceptCookies: () => void;
 
 }

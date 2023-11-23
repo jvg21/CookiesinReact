@@ -1,13 +1,11 @@
 import styled from "styled-components";
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef } from "react";
 import { useOutsideClickEvent } from "../../../application/hooks/useoutsideclickevent/useOutsideClickEvent";
 import { CookieThemeConfig } from "../../../application/model/cookiethemeconfig/CookieThemeConfig";
 import { CookieAcceptScreen } from "../../screens/cookieacceptscreen/CookieAcceptScreen";
 import { CookieConfigScreen } from "../../screens/cookieconfigscreen/CookieConfigScreen";
 import { CookieBackground } from "../cookiebackground/CookieBackground";
 import { CookieCloseButton } from "../cookieclosebutton/CookieCloseButton";
-import { CookieController } from "../../../application/controller/cookiecontroller/CookieController";
-import { Cookie } from "../../../application/model/cookie/Cookie";
 import { CookieContext } from "../../../application/context/CookieContext";
 
 const CookieCardContainer = styled.div<{ cookiethemeconfig: CookieThemeConfig; }>`
@@ -32,28 +30,10 @@ const CookieCardContainer = styled.div<{ cookiethemeconfig: CookieThemeConfig; }
     }
 `;
 export function CookiePage(props: { themeConfig: CookieThemeConfig}) {
-    const {modalCookie,setModalCookie,modalCookieConfig,setModalCookieConfig,fillCookieActive,cookieInfo,CookieActive,setCookieActive,setCookieValue} = useContext(CookieContext)
+    const {modalCookie,setModalCookie,modalCookieConfig} = useContext(CookieContext)
     
     const containerRef = useRef(null);
     useOutsideClickEvent(containerRef, () => { modalCookie ? setModalCookie(!modalCookie) : null });
-
-    let cookieController = new CookieController;
-
-    function accept() {
-        for (let i = 0; i < cookieInfo.length; i++) {
-            console.log(CookieActive);
-            if (CookieActive[i]) {
-                for (let cookie of cookieInfo[i].cookies) {
-                    cookieController.salvar(new Cookie(cookie.id, cookie.name, cookie.content, cookie.validity))
-                }
-            }
-        }
-        setModalCookie(false)
-    }
-    function acceptAll() {
-        setCookieActive(fillCookieActive())
-        setModalCookieConfig(false);
-    }
 
     return (
         <>
@@ -68,14 +48,12 @@ export function CookiePage(props: { themeConfig: CookieThemeConfig}) {
                             (!modalCookieConfig &&
                                 <CookieAcceptScreen
                                     themeConfig={props.themeConfig}
-                                    acceptCookies={accept}
                                 />
                             )
                             ||
                             (modalCookieConfig &&
                                 <CookieConfigScreen
                                     themeConfig={props.themeConfig}
-                                    setAllCokies={acceptAll}
                                 />
                             )
                         }

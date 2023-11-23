@@ -21,7 +21,7 @@ const CookieImageContainer = styled.div`
 `;
 
 export function CookieAcceptScreen(props: CookieAcceptScreenType) {
-    const {setModalCookieConfig,CookieActive} = useContext(CookieContext)
+    const {setModalCookieConfig,CookieActive,accept} = useContext(CookieContext)
     function acceptButtonTextChange(): string {
         for (let bool of CookieActive) {
             if (bool == true) {
@@ -59,7 +59,7 @@ export function CookieAcceptScreen(props: CookieAcceptScreenType) {
                     background={props.themeConfig.primaryAccentColor}
                     textcolor={props.themeConfig.primaryTextColor}
                     hoverbgcolor={props.themeConfig.hoverPrimaryAccendColor}
-                    onClick={() => props.acceptCookies()}
+                    onClick={() => accept()}
                 >
                     {acceptButtonTextChange()}
                 </CookieButton>
