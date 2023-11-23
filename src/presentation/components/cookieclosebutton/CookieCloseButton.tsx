@@ -1,6 +1,8 @@
 import { RxCross2 } from "react-icons/rx";
 import styled from "styled-components";
 import { CookieCloseButtonType } from "../../../application/types/components/cookieclosebuttontype/CookieCloseButtonType";
+import { CookieContext } from "../../../application/context/CookieContext";
+import { useContext } from "react";
 
 const CookieExitButtonContainer = styled.div`
     position:absolute;
@@ -21,11 +23,12 @@ const CookieCloseButtonElement = styled.button<{ buttonhovercolor: string }>`
 `;
 
 export function CookieCloseButton(props: CookieCloseButtonType) {
+    const {modalCookie,setModalCookie} = useContext(CookieContext)
     return (
         <CookieExitButtonContainer>
             <CookieCloseButtonElement
                 buttonhovercolor={props.themeConfig.primaryAccentColor} 
-                onClick={() => props.setActive(!props.isActive)}
+                onClick={() => setModalCookie(!modalCookie)}
             >
                 <RxCross2 />
             </CookieCloseButtonElement>

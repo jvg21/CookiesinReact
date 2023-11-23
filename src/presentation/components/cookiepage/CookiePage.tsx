@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { useOutsideClickEvent } from "../../../application/hooks/useoutsideclickevent/useOutsideClickEvent";
 import { CookieThemeConfig } from "../../../application/model/cookiethemeconfig/CookieThemeConfig";
 import { CookieAcceptScreen } from "../../screens/cookieacceptscreen/CookieAcceptScreen";
@@ -8,6 +8,7 @@ import { CookieBackground } from "../cookiebackground/CookieBackground";
 import { CookieCloseButton } from "../cookieclosebutton/CookieCloseButton";
 import { CookieController } from "../../../application/controller/cookiecontroller/CookieController";
 import { Cookie } from "../../../application/model/cookie/Cookie";
+import { CookieContext } from "../../../application/context/CookieContext";
 
 const CookieCardContainer = styled.div<{ cookiethemeconfig: CookieThemeConfig; }>`
     background-color: ${(props) => props.cookiethemeconfig.backgroundColor};
@@ -30,78 +31,51 @@ const CookieCardContainer = styled.div<{ cookiethemeconfig: CookieThemeConfig; }
         margin-top: 17.5rem
     }
 `;
-export function CookiePage(props: { state: boolean, themeConfig: CookieThemeConfig, cookieController: CookieController }) {
-    const [ativo, setAtivo] = useState(props.state || false); //// modal
-    const [config, setConfig] = useState(false); /// pagina de config
-
+export function CookiePage(props: { themeConfig: CookieThemeConfig}) {
+    const {modalCookie,setModalCookie,modalCookieConfig,setModalCookieConfig,fillCookieActive,cookieInfo,CookieActive,setCookieActive,setCookieValue} = useContext(CookieContext)
+    
     const containerRef = useRef(null);
-    useOutsideClickEvent(containerRef, () => { ativo ? setAtivo(!ativo) : null });
+    useOutsideClickEvent(containerRef, () => { modalCookie ? setModalCookie(!modalCookie) : null });
 
-    let cookieInfo = props.cookieController.getListarCookies();
-    const [CookieActive, setCookieActive] = useState<boolean[]>(fillCookieActive());
-
-    function setCookieValue(id: number, value: boolean) {
-        let cookieChange: boolean[] = [];
-        for (let i = 0; i < CookieActive.length; i++) {
-            if (i == id) {
-                cookieChange.push(value)
-            } else {
-                cookieChange.push(CookieActive[i])
-            }
-        }
-        setCookieActive(cookieChange);
-    }
-
-    function fillCookieActive() {
-        let CookieActiveArray: boolean[] = []
-        cookieInfo.forEach(() => {
-            CookieActiveArray.push(true)
-        })
-        return CookieActiveArray;
-    }
+    let cookieController = new CookieController;
 
     function accept() {
         for (let i = 0; i < cookieInfo.length; i++) {
             console.log(CookieActive);
             if (CookieActive[i]) {
                 for (let cookie of cookieInfo[i].cookies) {
-                    props.cookieController.salvar(new Cookie(cookie.id, cookie.name, cookie.content, cookie.validity))
+                    cookieController.salvar(new Cookie(cookie.id, cookie.name, cookie.content, cookie.validity))
                 }
             }
         }
-        setAtivo(false)
+        setModalCookie(false)
     }
     function acceptAll() {
         setCookieActive(fillCookieActive())
-        setConfig(false);
+        setModalCookieConfig(false);
     }
+
     return (
         <>
             {
-                ativo &&
+                modalCookie &&
                 <CookieBackground cookiethemeconfig={props.themeConfig}>
                     <CookieCardContainer
                         cookiethemeconfig={props.themeConfig}
                         ref={containerRef}>
-                        <CookieCloseButton themeConfig={props.themeConfig} isActive={ativo} setActive={setAtivo} />
+                        <CookieCloseButton themeConfig={props.themeConfig}  />
                         {
-                            (!config &&
+                            (!modalCookieConfig &&
                                 <CookieAcceptScreen
                                     themeConfig={props.themeConfig}
-                                    setConfig={setConfig}
                                     acceptCookies={accept}
-                                    cookieState={CookieActive}
                                 />
                             )
                             ||
-                            (config &&
+                            (modalCookieConfig &&
                                 <CookieConfigScreen
                                     themeConfig={props.themeConfig}
-                                    setConfig={setConfig}
                                     setAllCokies={acceptAll}
-                                    cookieInfo={cookieInfo}
-                                    cookieState={CookieActive}
-                                    changeCookieStateFunction={setCookieValue}
                                 />
                             )
                         }

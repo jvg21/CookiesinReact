@@ -1,6 +1,7 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useContext } from "react";
 import styled from "styled-components";
 import { CookieThemeConfig } from "../../../application/model/cookiethemeconfig/CookieThemeConfig";
+import { CookieContext } from "../../../application/context/CookieContext";
 
 const Label = styled.label`
   display: flex;
@@ -46,10 +47,11 @@ const Input = styled.input<{ inputcolor: string; }>`
   
 `;
 
-export function ToggleSwitch(props: { checked: boolean,id:number, setChecked?: (id:number,foo: boolean) => void; cookiethemeconfig: CookieThemeConfig}) {
+export function ToggleSwitch(props: { checked: boolean, id:number,  cookiethemeconfig: CookieThemeConfig}) {
+  const {setCookieValue} = useContext(CookieContext)
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (props.setChecked) {
-      (props.setChecked(props.id,e.target.checked))
+    if (setCookieValue) {
+      (setCookieValue(props.id,e.target.checked))
     }
   };
 

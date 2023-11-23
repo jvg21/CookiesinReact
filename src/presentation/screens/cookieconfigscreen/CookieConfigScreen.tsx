@@ -10,6 +10,8 @@ import { TextsConstants } from "../../../application/common/constants/TextsConst
 import { Spacer } from "../../components/spacer/spacer";
 import PresentationTexts from '../../../infrastructure/services/presentationTexts.json'
 import { CookieConfigScreenType } from "../../../application/types/screens/cookieconfigscreen/CookieConfigScreenType";
+import { useContext } from "react";
+import { CookieContext } from "../../../application/context/CookieContext";
 
 const CookieOptionList = styled.ul`
     display: flex;
@@ -21,6 +23,7 @@ const CookieOptionList = styled.ul`
 `;
 
 export function CookieConfigScreen(props: CookieConfigScreenType) {
+    const {CookieActive,cookieInfo,setModalCookieConfig} = useContext(CookieContext)
 
     return (
         <CookieBody
@@ -50,15 +53,14 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
 
             <CookieOptionList>
                 {
-                    props.cookieInfo.map((x, index) => {
+                    cookieInfo.map((x, index) => {
                         return (
                             <CookieToggleOption
                                 key={index}
                                 id={x.id}
                                 name={x.name}
                                 title={x.description}
-                                switchState={props.cookieState[x.id]}
-                                switchFunction={props.changeCookieStateFunction}
+                                switchState={CookieActive[x.id]}
                                 cookieThemeConfig={props.themeConfig}
                             />)
                     })
@@ -78,7 +80,7 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
                 <CookieButton
                     textcolor={props.themeConfig.primaryTextColor}
                     hoverbgcolor={props.themeConfig.backgroundColor}
-                    onClick={() => props.setConfig(false)}>
+                    onClick={() => setModalCookieConfig(false)}>
                     {PresentationTexts.configPageSaveButton}
                 </CookieButton>
             </ButtonDiv>

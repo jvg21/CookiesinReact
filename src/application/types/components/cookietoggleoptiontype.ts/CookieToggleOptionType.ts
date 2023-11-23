@@ -5,6 +5,5 @@ export type CookieToggleOptionType = {
     id:number;
     title: string;
     switchState?: boolean;
-    switchFunction?: (id:number,foo: boolean) => void;
     cookieThemeConfig: CookieThemeConfig;
 }

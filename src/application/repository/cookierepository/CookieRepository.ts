@@ -21,6 +21,7 @@ export class CookieRepository{
     public getListarCookies():CookieCategory[]{
         return this.listaCookies;
     }
+    
     public salvar(cookie:Cookie){
         // this.listaCookies[idCategory].cookies.push(cookie)
         console.log(cookie);
