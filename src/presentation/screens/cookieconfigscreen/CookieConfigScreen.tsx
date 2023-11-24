@@ -80,7 +80,7 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
                 >
                     {PresentationTexts.configPageAcceptButton}
                 </CookieButton>
-                <Spacer height="10px" />
+                <Spacer height="10px"/>
                 <CookieButton
                     textcolor={props.themeConfig.primaryTextColor}
                     hoverbgcolor={props.themeConfig.backgroundColor}
