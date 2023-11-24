@@ -12,6 +12,7 @@ import { CookieConfigScreenType } from "../../../application/types/screens/cooki
 import { useContext } from "react";
 import { CookieContext } from "../../../application/context/CookieContext";
 import { CookiePageContext } from "../../../application/context/CookiePageContext";
+import { CookieToggleOption } from "../../components/cookietoggleoption/CookieToggleOption";
 
 const CookieOptionList = styled.ul`
     display: flex;
@@ -52,12 +53,22 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
                     {PresentationTexts.configPageLinkText}
                 </CookieLink>
             </CookieDescription>
-            <Spacer height="30px"/>
+            <Spacer height="30px" />
 
             <CookieOptionList>
-              {
-                /////////////////////////////////////////////////////////////////////////////////////
-              }
+                {
+                    CookieInfoArray.map((x, index) => {
+                        return (
+                            <CookieToggleOption
+                                key={index}
+                                id={x.id}
+                                name={x.name}
+                                title={x.description}
+                                switchState={CookieStateArray[x.id]}
+                                cookieThemeConfig={props.themeConfig}
+                            />)
+                    })
+                }
             </CookieOptionList>
 
             <ButtonDiv>
@@ -69,7 +80,7 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
                 >
                     {PresentationTexts.configPageAcceptButton}
                 </CookieButton>
-                <Spacer height="10px"/>
+                <Spacer height="10px" />
                 <CookieButton
                     textcolor={props.themeConfig.primaryTextColor}
                     hoverbgcolor={props.themeConfig.backgroundColor}

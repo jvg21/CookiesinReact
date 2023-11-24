@@ -22,8 +22,8 @@ const CookieImageContainer = styled.div`
 `;
 
 export function CookieAcceptScreen(props: CookieAcceptScreenType) {
-    const {setModalCookieConfig} = useContext(CookiePageContext)
-    const {CookieStateArray} = useContext(CookieContext)
+    const { setModalCookieConfig } = useContext(CookiePageContext)
+    const { CookieStateArray, saveCookies } = useContext(CookieContext)
 
     function acceptButtonTextChange(): string {
         for (let bool of CookieStateArray) {
@@ -33,6 +33,7 @@ export function CookieAcceptScreen(props: CookieAcceptScreenType) {
         }
         return PresentationTexts.acceptPageRejectButton;
     }
+    
     return (
         <CookieBody cookiethemeconfig={props.themeConfig}>
             <CookieImageContainer>
@@ -43,7 +44,7 @@ export function CookieAcceptScreen(props: CookieAcceptScreenType) {
                 fontSize={TextsConstants.MEDIUM_TITLE_SIZE}>
                 {PresentationTexts.acceptPageTitle}
             </CookieTitle>
-            <Spacer height="50px"/>
+            <Spacer height="50px" />
             <CookieDescription
                 color={props.themeConfig.primaryTextColor}
                 textalign="center"
@@ -56,13 +57,13 @@ export function CookieAcceptScreen(props: CookieAcceptScreenType) {
                 href="./termos" target="_blank">
                 {PresentationTexts.acceptPageLinkText}
             </CookieLink>
-            <Spacer height="1vh"/>
+            <Spacer height="1vh" />
             <ButtonDiv>
                 <CookieButton
                     background={props.themeConfig.primaryAccentColor}
                     textcolor={props.themeConfig.primaryTextColor}
                     hoverbgcolor={props.themeConfig.hoverPrimaryAccendColor}
-                    onClick={() => {}}
+                    onClick={() => saveCookies()}
                 >
                     {acceptButtonTextChange()}
                 </CookieButton>
