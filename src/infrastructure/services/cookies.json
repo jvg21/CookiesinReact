@@ -1,58 +1,51 @@
 [
     {
-        "id": 0,
-        "name": "Cookies Analiticos",
-        "descriptions": "São os que viabilizam o ato de sua navegação no Portal ABDConst, de modo que as funcionalidades mais básicas lhe sejam oferecidas.",
-        "Cookies": [
-            {
-                "id": 0,
-                "name": "codigo_turma",
-                "descriptions": " Esses cookies são utilizados para gravar o aceite da Política de Política de Privacidade da ABDConst.",
-                "expireTime": 0.084,
-                "content": "codigo_turma"
-            }
-        ]
+        "id":0,
+        "name":"codigo_turma",
+        "description":"Esses cookies são utilizados para gravar o aceite da Política de Política de Privacidade da ABDConst.",
+        "content":"codigo_turma",
+        "category":"OPERACIONAIS",
+        "validity":0.083
     },
     {
-        "id": 1,
-        "name": "Cookies Operacionais",
-        "descriptions": "São aqueles dedicados a registrar os dados de uso do Portal ABDConst para que possamos aprimorá-lo futuramente, como os dados de índice de audiência da página e de fontes de tráfego.",
-        "Cookies": [
-            {
-                "id": 0,
-                "name": "_gagoogle",
-                "descriptions": "Esse cookie é utilizado para registrar um número individual de ID cujo propósito é gerar dados estatísticos de visitas ao site.",
-                "expireTime": 1,
-                "content": "_gagoogle"
-            },
-            {
-                "id": 1,
-                "name": "_gat",
-                "descriptions": "Esse cookie é pelo Google Analytics a fins de gerenciar a taxa de requisições à página.",
-                "expireTime": 1,
-                "content": "_gat"
-            },
-            {
-                "id": 2,
-                "name": "_gid",
-                "descriptions": "Esse cookie é utilizado para registrar um número individual de ID cujo propósito é gerar dados estatísticos sobre como o Usuário utiliza o website.",
-                "expireTime": 1,
-                "content": "_gid"
-            },
-            {
-                "id": 3,
-                "name": "collect",
-                "descriptions": "Esse cookie é utilizado para enviar dados do equipamento do visitante e de seu comportamento para o Google Analytics.",
-                "expireTime": 1,
-                "content": "collect"
-            },
-            {
-                "id": 4,
-                "name": "F1START",
-                "descriptions": "Esse cookie é utilizado para identificar dados da sessão do usuário durante a navegação.",
-                "expireTime": 9.125,
-                "content": "F1START"
-            }
-        ]
+        "id":1,
+        "name":"_gagoogle",
+        "description":"Esse cookie é utilizado para registrar um número individual de ID cujo propósito é gerar dados estatísticos de visitas ao site.",
+        "content":"_gagoogle",
+        "category":"ANALITICOS",
+        "validity":1
+    },
+    {
+        "id":2,
+        "name":"_gat",
+        "description":" Esse cookie é pelo Google Analytics a fins de gerenciar a taxa de requisições à página.",
+        "content":"_gat",
+        "category":"ANALITICOS",
+        "validity":1
+    },
+    {
+        "id":3,
+        "name":"_gid",
+        "description":"Esse cookie é utilizado para registrar um número individual de ID cujo propósito é gerar dados estatísticos sobre como o Usuário utiliza o website.",
+        "content":"_gid",
+        "category":"ANALITICOS",
+        "validity":1
+    },
+    {
+        "id":4,
+        "name":"collect",
+        "description":"Esse cookie é utilizado para enviar dados do equipamento do visitante e de seu comportamento para o Google Analytics.",
+        "content":"collect",
+        "category":"ANALITICOS",
+        "validity":1
+    },
+    {
+        "id":5,
+        "name":"F1START",
+        "description":"Esse cookie é utilizado para identificar dados da sessão do usuário durante a navegação.",
+        "content":"F1START",
+        "category":"ANALITICOS",
+        "validity":9.125
     }
+
 ]

@@ -1,24 +1,21 @@
 import { Cookie } from "../../model/cookie/Cookie";
 import Cookies from 'js-cookie';
-import { CookieCategory } from "../../model/cookiecategory/CookieCategory";
 import CookieJson from '../../../infrastructure/services/cookies.json';
 
 
 export class CookieRepository{
-    private listaCookies : CookieCategory[] = [];
+    private listaCookies : Cookie[] = [];
 
     constructor(){
-        CookieJson.map((x)=>{
-            let cookieCategoryArray: Cookie [] = [];
-            x.Cookies.map(cookie=>{
-              cookieCategoryArray.push(new Cookie(cookie.id,cookie.name,cookie.content,cookie.expireTime))
-            })
-        
-            this.listaCookies.push(new CookieCategory(x.id,x.name,x.descriptions,cookieCategoryArray));
-            
-          })
+        this.getFromDataBase();
     }
-    public getListarCookies():CookieCategory[]{
+    
+    public getFromDataBase(){
+        CookieJson.map((x)=>{
+            this.listaCookies.push(new Cookie(x.id,x.name,x.description,x.content,x.validity,x.category))            
+        })
+    }
+    public getListarCookies():Cookie[]{
         return this.listaCookies;
     }
     

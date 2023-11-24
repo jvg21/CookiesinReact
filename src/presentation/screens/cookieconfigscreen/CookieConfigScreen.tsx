@@ -12,6 +12,7 @@ import PresentationTexts from '../../../infrastructure/services/presentationText
 import { CookieConfigScreenType } from "../../../application/types/screens/cookieconfigscreen/CookieConfigScreenType";
 import { useContext } from "react";
 import { CookieContext } from "../../../application/context/CookieContext";
+import { CookiePageContext } from "../../../application/context/CookiePageContext";
 
 const CookieOptionList = styled.ul`
     display: flex;
@@ -23,7 +24,8 @@ const CookieOptionList = styled.ul`
 `;
 
 export function CookieConfigScreen(props: CookieConfigScreenType) {
-    const {CookieActive,cookieInfo,setModalCookieConfig,acceptAll} = useContext(CookieContext)
+    const {setModalCookieConfig} = useContext(CookiePageContext)
+    const {setAllCookieState} = useContext(CookieContext)
 
     return (
         <CookieBody
@@ -53,17 +55,15 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
 
             <CookieOptionList>
                 {
-                    cookieInfo.map((x, index) => {
-                        return (
-                            <CookieToggleOption
-                                key={index}
-                                id={x.id}
-                                name={x.name}
-                                title={x.description}
-                                switchState={CookieActive[x.id]}
-                                cookieThemeConfig={props.themeConfig}
-                            />)
-                    })
+                    // cookieInfo.map((x, index) => {
+                    //     return (
+                    //         <CookieToggleOption
+                    //             key={index}
+                    //             cookie={x}
+                    //             switchState={CookieActive[x.id]}
+                    //             cookieThemeConfig={props.themeConfig}
+                    //         />)
+                    // })
                 }
             </CookieOptionList>
 
@@ -72,7 +72,7 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
                     background={props.themeConfig.primaryAccentColor}
                     textcolor={props.themeConfig.primaryTextColor}
                     hoverbgcolor={props.themeConfig.hoverPrimaryAccendColor}
-                    onClick={() => acceptAll()}
+                    onClick={() =>{setAllCookieState(true),setModalCookieConfig(false)}}
                 >
                     {PresentationTexts.configPageAcceptButton}
                 </CookieButton>

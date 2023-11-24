@@ -1,34 +1,26 @@
 import { Dispatch, ReactNode, SetStateAction, createContext, useState } from 'react'
 import { CookieController } from "../controller/cookiecontroller/CookieController";
-import Cookies from 'js-cookie';
-import { CookieCategory } from '../model/cookiecategory/CookieCategory';
 import { Cookie } from '../model/cookie/Cookie';
 
 export interface CookieContextInterface {
-    cookieInfo: CookieCategory[],
-    CookieActive: boolean[],
-    setCookieActive: Dispatch<SetStateAction<boolean[]>>,
-    modalCookie: boolean,
-    setModalCookie: Dispatch<SetStateAction<boolean>>,
-    modalCookieConfig: boolean,
-    setModalCookieConfig: Dispatch<SetStateAction<boolean>>,
-    setCookieValue: (id: number, value: boolean) => void,
-    fillCookieActive: () => boolean[],
-    accept: () => void,
-    acceptAll: () => void
+    CookieStateArray: boolean[],
+    setCookieStateArray: Dispatch<SetStateAction<boolean[]>>,
+    setCookieStateByIndex:(index: number, value: boolean)=>void,
+    setCookieStateByCategory:(category:string,value:boolean)=>void,
+    setAllCookieState:(value:boolean)=>void
+    saveCookies:()=>void,
+    getCategories:()=>string[]
+    
 }
 const defaultState = {
-    cookieInfo: {},
-    CookieActive: {},
-    setCookieActive: (value: boolean[]) => { },
-    modalCookie: {},
-    setModalCookie: (value: boolean) => { },
-    modalCookieConfig: {},
-    setModalCookieConfig: (value: boolean) => { },
-    setCookieValue: (id: number, value: boolean) => { },
-    fillCookieActive: () => { },
-    accept: () => { },
-    acceptAll: () => { }
+    CookieStateArray: {},
+    setCookieStateArray: (_: boolean[]) => { },
+    setCookieStateByIndex:(_: number, __: boolean)=>{},
+    setCookieStateByCategory:(_:string,__:boolean)=>{},
+    setAllCookieState:(_:boolean)=>{},
+    saveCookies:()=>{},
+    getCategories:()=>{}
+
 } as CookieContextInterface
 
 export const CookieContext = createContext(defaultState)
@@ -37,60 +29,81 @@ type CookieProviderProps = {
     children: ReactNode
 }
 export const CookieProvider = ({ children }: CookieProviderProps) => {
-    let cookieController = new CookieController();
-    let cookieInfo = cookieController.getListarCookies();
-    const [CookieActive, setCookieActive] = useState<boolean[]>(fillCookieActive());
-    const [modalCookie, setModalCookie] = useState(haveActiveCookies() || false); //// modal
-    const [modalCookieConfig, setModalCookieConfig] = useState(false); /// pagina de config
+    let cookieInfo = new CookieController();
 
-    function setCookieValue(id: number, value: boolean) {
+    const [CookieStateArray,setCookieStateArray] = useState<boolean[]>(initCookieStateArray())
+    const [CookieInfoArray,setCookieInfoArray] = useState<Cookie[]>(initCookieInfoArray())
+
+    function initCookieInfoArray(){
+        let cookieArray : Cookie[] = [];
+        cookieInfo.getListarCookies().map((cookie)=>{
+            cookieArray.push(cookie)
+        })
+        return cookieArray;
+    }
+
+    function initCookieStateArray(){
+        let CookieStateArray: boolean[] = []
+        cookieInfo.getListarCookies().forEach(()=>{
+            CookieStateArray.push(true);
+        })
+        return CookieStateArray;
+    }
+
+    function setCookieStateByIndex(index: number, value: boolean) {
         let cookieChange: boolean[] = [];
-        for (let i = 0; i < CookieActive.length; i++) {
-            if (i == id) {
+        for (let i = 0; i < CookieStateArray.length; i++) {
+            if (i == index) {
                 cookieChange.push(value)
             } else {
-                cookieChange.push(CookieActive[i])
+                cookieChange.push(CookieStateArray[i])
             }
         }
-        setCookieActive(cookieChange);
+        setCookieStateArray(cookieChange);
     }
 
-    function fillCookieActive() {
-        let CookieActiveArray: boolean[] = []
-        cookieInfo.forEach(() => {
-            CookieActiveArray.push(true)
-        })
-        return CookieActiveArray;
-    }
-    function haveActiveCookies(): boolean {
-        for (let category of cookieInfo) {
-            for (let cookie of category.cookies) {
-                if (Cookies.get(cookie.name)) {
-                    return false;
-                }
+    function setCookieStateByCategory(category:string,value:boolean){
+        let cookieChange: boolean[] = [];
+        for (let i = 0; i < CookieInfoArray.length; i++) {
+            if (CookieInfoArray[i].category == category.toUpperCase()) {
+                cookieChange.push(value);
+            } else {
+                cookieChange.push(CookieStateArray[i]);
             }
         }
-        return true
+        setCookieStateArray(cookieChange);
     }
-    function accept() {
-        for (let i = 0; i < cookieInfo.length; i++) {
-            console.log(CookieActive);
-            if (CookieActive[i]) {
-                for (let cookie of cookieInfo[i].cookies) {
-                    cookieController.salvar(new Cookie(cookie.id, cookie.name,cookie.description, cookie.content, cookie.validity))
-                }
+
+    function setAllCookieState(value:boolean){
+        let cookieChange: boolean[] = [];
+        for (let i = 0; i < CookieStateArray.length; i++) {
+            cookieChange.push(value);
+        }
+        setCookieStateArray(cookieChange);
+    }
+
+    function saveCookies(){
+        for(let i = 0 ; i<CookieStateArray.length;i++){
+            if(CookieStateArray[i]){
+                cookieInfo.salvar(CookieInfoArray[i]);
             }
         }
-        setModalCookie(false)
     }
-    function acceptAll() {
-        setCookieActive(fillCookieActive())
-        setModalCookieConfig(false);
+
+    function getCategories(){
+        let Categories : string[] = [];
+        for(let cookie of CookieInfoArray){
+            if( !Categories.includes(cookie.category) ){
+                Categories.push(cookie.category)
+            }
+            
+        }
+        return Categories;
     }
 
     return (
-        <CookieContext.Provider value={{ cookieInfo, CookieActive, setCookieActive, modalCookie, setModalCookie, modalCookieConfig, setModalCookieConfig, setCookieValue, fillCookieActive, accept, acceptAll }}>
+        <CookieContext.Provider value={{CookieStateArray,setCookieStateArray, setCookieStateByIndex, setCookieStateByCategory ,setAllCookieState,saveCookies,getCategories }}>
             {children}
         </CookieContext.Provider>
     )
-}
+}      

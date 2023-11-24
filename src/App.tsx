@@ -1,4 +1,5 @@
 import { CookieProvider } from "./application/context/CookieContext";
+import { CookiePageProvider } from "./application/context/CookiePageContext";
 import { CookieThemeConfig } from "./application/model/cookiethemeconfig/CookieThemeConfig";
 import { CookiePage } from "./presentation/components/cookiepage/CookiePage";
 
@@ -15,11 +16,14 @@ function App() {
 
   return (
     <>
-    <CookieProvider>
+    <CookiePageProvider>
+      <CookieProvider>
       <CookiePage
           themeConfig={themeConfig}
         />
-    </CookieProvider>
+      </CookieProvider>
+      
+    </CookiePageProvider>
 
       
     </>

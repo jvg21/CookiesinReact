@@ -13,6 +13,7 @@ const CookieOptionLi = styled.li`
     list-style-type:none;
     border-bottom: 0.5px solid lightgray;
 `;
+
 const CookieLiSubContainer = styled.div`
     display: flex;
     justify-content: center;
@@ -27,12 +28,19 @@ const OptionText = styled.p`
 
 export function CookieToggleOption(props: CookieToggleOptionType) {
     return (
+        <>
         <CookieOptionLi>
             <CookieLiSubContainer>
-                <OptionText>{props.name}</OptionText>
-                <BsFillInfoCircleFill title={props.title} />
+                <OptionText>{props.cookie.name}</OptionText>
+                <BsFillInfoCircleFill title={props.cookie.description} />
             </CookieLiSubContainer>
-            <ToggleSwitch cookiethemeconfig={props.cookieThemeConfig} id={props.id} checked={props.switchState || false} />
+            <ToggleSwitch cookiethemeconfig={props.cookieThemeConfig} id={props.cookie.id} checked={props.switchState || false} />
         </CookieOptionLi>
+        </>
+      
+        
+        
+
+        
     )
 }

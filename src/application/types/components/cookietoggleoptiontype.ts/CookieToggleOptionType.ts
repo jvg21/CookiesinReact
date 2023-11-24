@@ -1,9 +1,8 @@
+import { Cookie } from "../../../model/cookie/Cookie";
 import { CookieThemeConfig } from "../../../model/cookiethemeconfig/CookieThemeConfig";
 
 export type CookieToggleOptionType = { 
-    name: string;
-    id:number;
-    title: string;
+    cookie: Cookie;
     switchState?: boolean;
     cookieThemeConfig: CookieThemeConfig;
 }

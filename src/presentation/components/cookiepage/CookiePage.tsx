@@ -7,6 +7,7 @@ import { CookieConfigScreen } from "../../screens/cookieconfigscreen/CookieConfi
 import { CookieBackground } from "../cookiebackground/CookieBackground";
 import { CookieCloseButton } from "../cookieclosebutton/CookieCloseButton";
 import { CookieContext } from "../../../application/context/CookieContext";
+import { CookiePageContext } from "../../../application/context/CookiePageContext";
 
 const CookieCardContainer = styled.div<{ cookiethemeconfig: CookieThemeConfig; }>`
     background-color: ${(props) => props.cookiethemeconfig.backgroundColor};
@@ -30,7 +31,7 @@ const CookieCardContainer = styled.div<{ cookiethemeconfig: CookieThemeConfig; }
     }
 `;
 export function CookiePage(props: { themeConfig: CookieThemeConfig }) {
-    const { modalCookie, setModalCookie, modalCookieConfig } = useContext(CookieContext)
+    const { modalCookie, setModalCookie, modalCookieConfig } = useContext(CookiePageContext)
 
     const containerRef = useRef(null);
     useOutsideClickEvent(containerRef, () => { modalCookie ? setModalCookie(!modalCookie) : null });

@@ -12,6 +12,7 @@ import { TextsConstants } from "../../../application/common/constants/TextsConst
 import PresentationTexts from '../../../infrastructure/services/presentationTexts.json'
 import { useContext } from "react";
 import { CookieContext } from "../../../application/context/CookieContext";
+import { CookiePageContext } from "../../../application/context/CookiePageContext";
 
 const CookieImageContainer = styled.div`
     & img{
@@ -21,14 +22,14 @@ const CookieImageContainer = styled.div`
 `;
 
 export function CookieAcceptScreen(props: CookieAcceptScreenType) {
-    const {setModalCookieConfig,CookieActive,accept} = useContext(CookieContext)
+    const {setModalCookieConfig} = useContext(CookiePageContext)
 
     function acceptButtonTextChange(): string {
-        for (let bool of CookieActive) {
-            if (bool == true) {
-                return PresentationTexts.acceptPageButton;
-            }
-        }
+        // for (let bool of CookieActive) {
+        //     if (bool == true) {
+        //         return PresentationTexts.acceptPageButton;
+        //     }
+        // }
         return PresentationTexts.acceptPageRejectButton;
     }
     return (
@@ -60,7 +61,7 @@ export function CookieAcceptScreen(props: CookieAcceptScreenType) {
                     background={props.themeConfig.primaryAccentColor}
                     textcolor={props.themeConfig.primaryTextColor}
                     hoverbgcolor={props.themeConfig.hoverPrimaryAccendColor}
-                    onClick={() => accept()}
+                    onClick={() => {}}
                 >
                     {acceptButtonTextChange()}
                 </CookieButton>

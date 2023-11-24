@@ -1,5 +1,4 @@
 import { Cookie } from "../../model/cookie/Cookie";
-import { CookieCategory } from "../../model/cookiecategory/CookieCategory";
 import { CookieValidation } from "../../validation/cookievalidation/CookieValidation";
 
 export class CookieController{
@@ -8,7 +7,7 @@ export class CookieController{
     constructor(){
         this._cookieValidation = new CookieValidation();
     }
-    public getListarCookies():CookieCategory[]{
+    public getListarCookies():Cookie[]{
         return this._cookieValidation.getListarCookies();
     }
     public salvar(cookie:Cookie){
