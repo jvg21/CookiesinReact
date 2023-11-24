@@ -31,16 +31,11 @@ export function CookieToggleOption(props: CookieToggleOptionType) {
         <>
         <CookieOptionLi>
             <CookieLiSubContainer>
-                <OptionText>{props.cookie.name}</OptionText>
-                <BsFillInfoCircleFill title={props.cookie.description} />
+                <OptionText>{props.name}</OptionText>
+                <BsFillInfoCircleFill title={props.title} />
             </CookieLiSubContainer>
-            <ToggleSwitch cookiethemeconfig={props.cookieThemeConfig} id={props.cookie.id} checked={props.switchState || false} />
+            <ToggleSwitch cookiethemeconfig={props.cookieThemeConfig} id={props.id} checked={props.switchState || false} />
         </CookieOptionLi>
         </>
-      
-        
-        
-
-        
     )
 }

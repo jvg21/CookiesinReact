@@ -5,6 +5,7 @@ import { Cookie } from '../model/cookie/Cookie';
 export interface CookieContextInterface {
     CookieStateArray: boolean[],
     setCookieStateArray: Dispatch<SetStateAction<boolean[]>>,
+    CookieInfoArray : Cookie[],
     setCookieStateByIndex:(index: number, value: boolean)=>void,
     setCookieStateByCategory:(category:string,value:boolean)=>void,
     setAllCookieState:(value:boolean)=>void
@@ -15,6 +16,7 @@ export interface CookieContextInterface {
 const defaultState = {
     CookieStateArray: {},
     setCookieStateArray: (_: boolean[]) => { },
+    CookieInfoArray : {},
     setCookieStateByIndex:(_: number, __: boolean)=>{},
     setCookieStateByCategory:(_:string,__:boolean)=>{},
     setAllCookieState:(_:boolean)=>{},
@@ -102,7 +104,7 @@ export const CookieProvider = ({ children }: CookieProviderProps) => {
     }
 
     return (
-        <CookieContext.Provider value={{CookieStateArray,setCookieStateArray, setCookieStateByIndex, setCookieStateByCategory ,setAllCookieState,saveCookies,getCategories }}>
+        <CookieContext.Provider value={{CookieStateArray,setCookieStateArray,CookieInfoArray, setCookieStateByIndex, setCookieStateByCategory ,setAllCookieState,saveCookies,getCategories }}>
             {children}
         </CookieContext.Provider>
     )

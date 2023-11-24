@@ -48,10 +48,10 @@ const Input = styled.input<{ inputcolor: string; }>`
 `;
 
 export function ToggleSwitch(props: { checked: boolean, id:number,  cookiethemeconfig: CookieThemeConfig}) {
-  const {setCookieValue} = useContext(CookieContext)
+  const {setCookieStateByIndex} = useContext(CookieContext)
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (setCookieValue) {
-      (setCookieValue(props.id,e.target.checked))
+    if (setCookieStateByIndex) {
+      (setCookieStateByIndex(props.id,e.target.checked))
     }
   };
 

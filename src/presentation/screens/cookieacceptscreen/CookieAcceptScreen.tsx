@@ -23,13 +23,14 @@ const CookieImageContainer = styled.div`
 
 export function CookieAcceptScreen(props: CookieAcceptScreenType) {
     const {setModalCookieConfig} = useContext(CookiePageContext)
+    const {CookieStateArray} = useContext(CookieContext)
 
     function acceptButtonTextChange(): string {
-        // for (let bool of CookieActive) {
-        //     if (bool == true) {
-        //         return PresentationTexts.acceptPageButton;
-        //     }
-        // }
+        for (let bool of CookieStateArray) {
+            if (bool == true) {
+                return PresentationTexts.acceptPageButton;
+            }
+        }
         return PresentationTexts.acceptPageRejectButton;
     }
     return (
