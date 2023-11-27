@@ -67,13 +67,14 @@ export function CookieAcceptScreen(props: CookieAcceptScreenType) {
                 >
                     {acceptButtonTextChange()}
                 </CookieButton>
-                <Spacer height="10px" />
+                <Spacer height="10px"/>
                 <CookieButton
                     textcolor={props.themeConfig.primaryTextColor}
                     hoverbgcolor={props.themeConfig.backgroundColor}
                     onClick={() => setModalCookieConfig(true)}>
                     {PresentationTexts.acceptPageConfigButton}
                 </CookieButton>
+                <Spacer height="10px"/>
             </ButtonDiv>
         </CookieBody>
     )

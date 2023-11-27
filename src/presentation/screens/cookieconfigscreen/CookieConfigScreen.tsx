@@ -13,6 +13,7 @@ import { useContext } from "react";
 import { CookieContext } from "../../../application/context/CookieContext";
 import { CookiePageContext } from "../../../application/context/CookiePageContext";
 import { CookieToggleOption } from "../../components/cookietoggleoption/CookieToggleOption";
+import { CookieCategoryList } from "../../components/cookiecateogorylist/CookieCategoryList";
 
 const CookieOptionList = styled.ul`
     display: flex;
@@ -27,8 +28,6 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
     const { setModalCookieConfig } = useContext(CookiePageContext)
     const { setAllCookieState, getCategories, CookieInfoArray, CookieStateArray, setCookieStateByIndex } = useContext(CookieContext)
 
-    let teste = getCategories();
-
     return (
         <CookieBody
             cookiethemeconfig={props.themeConfig}
@@ -38,7 +37,7 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
                 {PresentationTexts.configPageTitle}
             </CookieTitle>
 
-            <Spacer height={'50px'} />
+            <Spacer height={'50px'}/>
 
             <CookieDescription
                 textalign='justify'
@@ -53,22 +52,12 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
                     {PresentationTexts.configPageLinkText}
                 </CookieLink>
             </CookieDescription>
-            <Spacer height="30px" />
+            <Spacer height="30px"/>
 
             <CookieOptionList>
-                {
-                    CookieInfoArray.map((x, index) => {
-                        return (
-                            <CookieToggleOption
-                                key={index}
-                                id={x.id}
-                                name={x.name}
-                                title={x.description}
-                                switchState={CookieStateArray[x.id]}
-                                cookieThemeConfig={props.themeConfig}
-                            />)
-                    })
-                }
+                
+                <CookieCategoryList themeConfig={props.themeConfig}/>
+
             </CookieOptionList>
 
             <ButtonDiv>
@@ -87,6 +76,7 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
                     onClick={() => setModalCookieConfig(false)}>
                     {PresentationTexts.configPageSaveButton}
                 </CookieButton>
+                <Spacer height="10px"/>
             </ButtonDiv>
         </CookieBody>
     )
