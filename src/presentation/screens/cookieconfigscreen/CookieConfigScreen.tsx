@@ -52,6 +52,7 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
             <Spacer height="30px" />
             <CookieOptionList>
                 <CookieCategoryList themeConfig={props.themeConfig}></CookieCategoryList>
+                
             </CookieOptionList>
             <ButtonDiv>
                 <CookieButton
