@@ -1,7 +1,7 @@
 [
     {
         "id":0,
-        "name":"codigo_turma",
+        "name":"Codigo Turma",
         "description":"Esses cookies são utilizados para gravar o aceite da Política de Política de Privacidade da ABDConst.",
         "content":"codigo_turma",
         "category":"OPERACIONAIS",
@@ -9,7 +9,7 @@
     },
     {
         "id":1,
-        "name":"_gagoogle",
+        "name":"GaGoogle",
         "description":"Esse cookie é utilizado para registrar um número individual de ID cujo propósito é gerar dados estatísticos de visitas ao site.",
         "content":"_gagoogle",
         "category":"ANALITICOS",
@@ -17,7 +17,7 @@
     },
     {
         "id":2,
-        "name":"_gat",
+        "name":"Gat",
         "description":" Esse cookie é pelo Google Analytics a fins de gerenciar a taxa de requisições à página.",
         "content":"_gat",
         "category":"ANALITICOS",
@@ -25,7 +25,7 @@
     },
     {
         "id":3,
-        "name":"_gid",
+        "name":"Gid",
         "description":"Esse cookie é utilizado para registrar um número individual de ID cujo propósito é gerar dados estatísticos sobre como o Usuário utiliza o website.",
         "content":"_gid",
         "category":"ANALITICOS",
@@ -33,7 +33,7 @@
     },
     {
         "id":4,
-        "name":"collect",
+        "name":"Collect",
         "description":"Esse cookie é utilizado para enviar dados do equipamento do visitante e de seu comportamento para o Google Analytics.",
         "content":"collect",
         "category":"ANALITICOS",
@@ -41,7 +41,7 @@
     },
     {
         "id":5,
-        "name":"F1START",
+        "name":"F1Start",
         "description":"Esse cookie é utilizado para identificar dados da sessão do usuário durante a navegação.",
         "content":"F1START",
         "category":"ANALITICOS",
