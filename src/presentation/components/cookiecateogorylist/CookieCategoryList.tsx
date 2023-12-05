@@ -6,12 +6,13 @@ import { Cookie } from "../../../application/model/cookie/Cookie";
 
 
 export function CookieCategoryList(props: { themeConfig: CookieThemeConfig }) {
-    const { getCategories, CookieInfoArray,CookieStateArray } = useContext(CookieContext)
+    const { getCategories, CookieInfoArray, CookieStateArray } = useContext(CookieContext)
     const category = getCategories();
 
     return (
         <>
             {
+                
                 CookieInfoArray.map((x, index) => {
                     return (
                         <>
@@ -26,6 +27,7 @@ export function CookieCategoryList(props: { themeConfig: CookieThemeConfig }) {
                         </>
                     )
                 })
+
             }
         </>
     )

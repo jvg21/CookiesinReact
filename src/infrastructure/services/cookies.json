@@ -1,51 +1,57 @@
 [
     {
-        "id":0,
-        "name":"Codigo Turma",
-        "description":"Esses cookies são utilizados para gravar o aceite da Política de Política de Privacidade da ABDConst.",
-        "content":"codigo_turma",
-        "category":"OPERACIONAIS",
-        "validity":0.083
+        "id": 0,
+        "name": "OPERACIONAIS",
+        "cookies": [
+            {
+                "id": 0,
+                "name": "Codigo Turma",
+                "description": "Esses cookies são utilizados para gravar o aceite da Política de Política de Privacidade da ABDConst.",
+                "content": "codigo_turma",
+                "validity": 0.083
+            }
+        ]
     },
     {
-        "id":1,
-        "name":"GaGoogle",
-        "description":"Esse cookie é utilizado para registrar um número individual de ID cujo propósito é gerar dados estatísticos de visitas ao site.",
-        "content":"_gagoogle",
-        "category":"ANALITICOS",
-        "validity":1
-    },
-    {
-        "id":2,
-        "name":"Gat",
-        "description":" Esse cookie é pelo Google Analytics a fins de gerenciar a taxa de requisições à página.",
-        "content":"_gat",
-        "category":"ANALITICOS",
-        "validity":1
-    },
-    {
-        "id":3,
-        "name":"Gid",
-        "description":"Esse cookie é utilizado para registrar um número individual de ID cujo propósito é gerar dados estatísticos sobre como o Usuário utiliza o website.",
-        "content":"_gid",
-        "category":"ANALITICOS",
-        "validity":1
-    },
-    {
-        "id":4,
-        "name":"Collect",
-        "description":"Esse cookie é utilizado para enviar dados do equipamento do visitante e de seu comportamento para o Google Analytics.",
-        "content":"collect",
-        "category":"ANALITICOS",
-        "validity":1
-    },
-    {
-        "id":5,
-        "name":"F1Start",
-        "description":"Esse cookie é utilizado para identificar dados da sessão do usuário durante a navegação.",
-        "content":"F1START",
-        "category":"ANALITICOS",
-        "validity":9.125
+        "id": 1,
+        "name": "ANALITICOS",
+        "cookies": [
+            {
+                "id": 1,
+                "name": "GaGoogle",
+                "description": "Esse cookie é utilizado para registrar um número individual de ID cujo propósito é gerar dados estatísticos de visitas ao site.",
+                "content": "_gagoogle",
+                "category": "ANALITICOS",
+                "validity": 1
+            },
+            {
+                "id": 2,
+                "name": "Gat",
+                "description": " Esse cookie é pelo Google Analytics a fins de gerenciar a taxa de requisições à página.",
+                "content": "_gat",
+                "validity": 1
+            },
+            {
+                "id": 3,
+                "name": "Gid",
+                "description": "Esse cookie é utilizado para registrar um número individual de ID cujo propósito é gerar dados estatísticos sobre como o Usuário utiliza o website.",
+                "content": "_gid",
+                "validity": 1
+            },
+            {
+                "id": 4,
+                "name": "Collect",
+                "description": "Esse cookie é utilizado para enviar dados do equipamento do visitante e de seu comportamento para o Google Analytics.",
+                "content": "collect",
+                "validity": 1
+            },
+            {
+                "id": 5,
+                "name": "F1Start",
+                "description": "Esse cookie é utilizado para identificar dados da sessão do usuário durante a navegação.",
+                "content": "F1START",
+                "validity": 9.125
+            }
+        ]
     }
-
 ]

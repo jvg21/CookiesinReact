@@ -1,4 +1,5 @@
 import { Cookie } from "../../model/cookie/Cookie";
+import { CookieCategory } from "../../model/cookiecategory/CookieCategory";
 import { CookieRepository } from "../../repository/cookierepository/CookieRepository";
 
 export class CookieValidation{
@@ -8,8 +9,8 @@ export class CookieValidation{
         this._cookieRepository = new CookieRepository();
     }
 
-    public getListarCookies():Cookie[]{
-        return this._cookieRepository.getListarCookies();
+    public getListarCookies():CookieCategory[]{
+        return this._cookieRepository.getListarCategorias();
     }
     public salvar(cookie:Cookie){
         this._cookieRepository.salvar(cookie);
