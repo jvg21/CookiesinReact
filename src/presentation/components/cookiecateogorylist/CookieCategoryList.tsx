@@ -5,27 +5,24 @@ import { CookieToggleOption } from "../cookietoggleoption/CookieToggleOption";
 import { Cookie } from "../../../application/model/cookie/Cookie";
 
 
-export function CookieCategoryList(props: { themeConfig: CookieThemeConfig }) {
-    const { getCategories, CookieInfoArray, CookieStateArray } = useContext(CookieContext)
-    const category = getCategories();
+export function CookieCategoryList(props: { themeConfig: CookieThemeConfig, cookieList: Cookie[] }) {
+    const {CookieStateArray } = useContext(CookieContext)
 
     return (
         <>
             {
-                
-                CookieInfoArray.map((x, index) => {
+                props.cookieList.map((cookie,index) => {
                     return (
                         <>
                             <CookieToggleOption
                                 key={index}
-                                id={x.id}
-                                name={x.name}
-                                title={x.description}
-                                switchState={CookieStateArray[x.id]}
+                                id={cookie.id}
+                                name={cookie.name}
+                                title={cookie.description}
+                                switchState={CookieStateArray[cookie.id]}
                                 cookieThemeConfig={props.themeConfig}
                             />
-                        </>
-                    )
+                        </>)
                 })
 
             }

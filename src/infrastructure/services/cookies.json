@@ -2,6 +2,7 @@
     {
         "id": 0,
         "name": "OPERACIONAIS",
+        "description": "São cookies que viabilizam o ato de sua navegação no Portal ABDConst, de modo que as funcionalidades mais básicas lhe sejam oferecidas.",
         "cookies": [
             {
                 "id": 0,
@@ -15,6 +16,7 @@
     {
         "id": 1,
         "name": "ANALITICOS",
+        "description":" São os cookies dedicados a registrar os dados de uso do Portal ABDConst para que possamos aprimorá-lo futuramente",
         "cookies": [
             {
                 "id": 1,

@@ -8,8 +8,11 @@ export class CookieController{
     constructor(){
         this._cookieValidation = new CookieValidation();
     }
-    public getListarCookies():CookieCategory[]{
-        return this._cookieValidation.getListarCookies();
+    public getListarCookieCategory():CookieCategory[]{
+        return this._cookieValidation.getListarCookieCategory();
+    }
+    public getCookies():Cookie[]{
+        return this._cookieValidation.getCookies();
     }
     public salvar(cookie:Cookie){
         this._cookieValidation.salvar(cookie);

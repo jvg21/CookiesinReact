@@ -9,8 +9,11 @@ export class CookieValidation{
         this._cookieRepository = new CookieRepository();
     }
 
-    public getListarCookies():CookieCategory[]{
-        return this._cookieRepository.getListarCategorias();
+    public getListarCookieCategory():CookieCategory[]{
+        return this._cookieRepository.getListarCookieCategory();
+    }
+    public getCookies():Cookie[]{
+        return this._cookieRepository.getCookie();
     }
     public salvar(cookie:Cookie){
         this._cookieRepository.salvar(cookie);

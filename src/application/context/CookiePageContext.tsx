@@ -22,7 +22,7 @@ type CookiePageProviderProps = {
     children: ReactNode
 }
 export const CookiePageProvider = ({ children }: CookiePageProviderProps) => {
-    let cookies = new CookieController().getListarCookies();
+    let cookies = new CookieController().getListarCookieCategory();
 
     const [modalCookie, setModalCookie] = useState(haveActiveCookies() || false); //// modal
     const [modalCookieConfig, setModalCookieConfig] = useState(false); /// pagina de config
