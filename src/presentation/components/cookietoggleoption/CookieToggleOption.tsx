@@ -29,7 +29,7 @@ const OptionText = styled.p`
 `;
 
 export function CookieToggleOption(props: CookieToggleOptionType) {
-  const {setCookieStateByIndex} = useContext(CookieContext)
+  const {setStateById} = useContext(CookieContext)
 
     return (
         <>
@@ -38,7 +38,7 @@ export function CookieToggleOption(props: CookieToggleOptionType) {
                 <OptionText>{props.name}</OptionText>
                 <BsFillInfoCircleFill title={props.title} />
             </CookieLiSubContainer>
-            <ToggleSwitch cookiethemeconfig={props.cookieThemeConfig} setCookieState={setCookieStateByIndex} id={props.id} checked={props.switchState || false} />
+            <ToggleSwitch cookiethemeconfig={props.cookieThemeConfig} setCookieState={setStateById} id={props.id} checked={props.switchState || false} />
         </CookieOptionLi>
         </>
     )

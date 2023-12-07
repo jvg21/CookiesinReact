@@ -12,6 +12,8 @@ import { CookieConfigScreenType } from "../../../application/types/screens/cooki
 import { useContext } from "react";
 import { CookieContext } from "../../../application/context/CookieContext";
 import { CookiePageContext } from "../../../application/context/CookiePageContext";
+import { CookieCategoryList } from "../../components/cookiecateogorylist/CookieCategoryList";
+import { CookieToggleOption } from "../../components/cookietoggleoption/CookieToggleOption";
 
 const CookieOptionList = styled.ul`
     display: flex;
@@ -24,7 +26,7 @@ const CookieOptionList = styled.ul`
 
 export function CookieConfigScreen(props: CookieConfigScreenType) {
     const { setModalCookieConfig } = useContext(CookiePageContext)
-    // const { CookieInfoArray, setCookieStateArray } = useContext(CookieContext)
+    const { setAllState, CookieInfoArray } = useContext(CookieContext)
 
     return (
         <CookieBody
@@ -50,31 +52,30 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
             </CookieDescription>
             <Spacer height="30px" />
             <CookieOptionList>
-                {/* {
+                {
                     CookieInfoArray.map((category, index) => {
                         return (
                             <>
                                 <CookieToggleOption
-                                    key={index}
+                                    key={index+9999}
                                     id={category.id}
                                     name={category.name}
                                     title={category.description}
-                                    switchState={true}
                                     cookieThemeConfig={props.themeConfig}
                                 />
-                                <CookieCategoryList themeConfig={props.themeConfig} cookieList={category.cookies}></CookieCategoryList>
-                            </>
-                        );
-                    })
-                } */}
+                                <CookieCategoryList key={index} themeConfig={props.themeConfig} cookieList={category.cookies}></CookieCategoryList>
 
+                            </>
+                        )
+                    })
+                }
             </CookieOptionList>
             <ButtonDiv>
                 <CookieButton
                     background={props.themeConfig.primaryAccentColor}
                     textcolor={props.themeConfig.primaryTextColor}
                     hoverbgcolor={props.themeConfig.hoverPrimaryAccendColor}
-                    onClick={() => { }}
+                    onClick={() => { setAllState() }}
                 >
                     {PresentationTexts.configPageAcceptButton}
                 </CookieButton>

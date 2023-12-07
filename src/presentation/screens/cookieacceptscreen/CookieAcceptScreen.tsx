@@ -27,7 +27,7 @@ export function CookieAcceptScreen(props: CookieAcceptScreenType) {
 
     function acceptButtonTextChange(): string {
         for (let bool of CookieStateArray) {
-            if (bool == true) {
+            if (bool.state == true) {
                 return PresentationTexts.acceptPageButton;
             }
         }
