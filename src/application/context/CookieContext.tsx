@@ -9,7 +9,8 @@ export interface CookieContextInterface {
     CookieInfoArray: CookieCategory[],
     setStateById: (index: number, cookieState: boolean) => void,
     getStateById: (id: number) => boolean,
-    // setCookieStateByCategory:(category:string,value:boolean)=>void,
+    setStateByCategoryId: (index: number, cookieState: boolean) => void,
+    getCategoryState:(idCategory:number)=>boolean;
     setAllState: () => void
     saveCookies: () => void,
     // getCategories:()=>string[]
@@ -20,7 +21,9 @@ const defaultState = {
     setCookieStateArray: (_: CookieState[]) => { },
     // CookieInfoArray : {},
     setStateById: (_: number, __: boolean) => { },
-    getStateById: (id: number) => { },
+    getStateById: (_: number) => { },
+    setStateByCategoryId: (_: number, __: boolean) => { },
+    getCategoryState: (_: number) => { },
     // setCookieStateByCategory:(_:string,__:boolean)=>{},
     setAllState: () => { },
     saveCookies: () => { },
@@ -35,7 +38,9 @@ type CookieProviderProps = {
 }
 type CookieState = {
     state: boolean,
-    cookieId: number
+    cookieId: number,
+    categoryId: number
+
 }
 
 export const CookieProvider = ({ children }: CookieProviderProps) => {
@@ -51,25 +56,57 @@ export const CookieProvider = ({ children }: CookieProviderProps) => {
         let CookieState: CookieState[] = [];
         for (let category of CookieInfoArray) {
             for (let i = 0; i < category.cookies.length; i++) {
-                CookieState.push({ state: true, cookieId: category.cookies[i].id })
+                CookieState.push({ state: true, cookieId: category.cookies[i].id, categoryId: category.id })
             }
         }
-
         return CookieState;
     }
+
+    function getCategoryState(idCategory: number) {
+        let state = false;
+
+        for (let category of CookieInfoArray) {
+            if (idCategory == category.id) {
+                for (let cookie of CookieStateArray) {
+                    if (category.id === cookie.categoryId) {
+                        if (cookie.state) {
+                            state = true;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        return state;
+    }
+
     function setAllState() {
         setCookieStateArray(initCookieStateArray());
     }
 
-    function setStateById(id: number, state: boolean) {
+    function setStateById(idCookie: number, state: boolean) {
         let CookieState: CookieState[] = [];
         for (let cookieState of CookieStateArray) {
-            if (id === cookieState.cookieId) {
-                CookieState.push({ state: state, cookieId: cookieState.cookieId })
+            if (idCookie === cookieState.cookieId) {
+                CookieState.push({ state: state, cookieId: cookieState.cookieId, categoryId: cookieState.categoryId })
             } else {
-                CookieState.push({ state: cookieState.state, cookieId: cookieState.cookieId })
+                CookieState.push({ state: cookieState.state, cookieId: cookieState.cookieId, categoryId: cookieState.categoryId })
             }
         }
+        setCookieStateArray(CookieState);
+    }
+
+    function setStateByCategoryId(idCategory: number, state: boolean) {
+        let CookieState: CookieState[] = [];
+
+        for (let cookieState of CookieStateArray) {
+            if (idCategory === cookieState.categoryId) {
+                CookieState.push({ state: state, cookieId: cookieState.cookieId, categoryId: cookieState.categoryId })
+            } else {
+                CookieState.push({ state: cookieState.state, cookieId: cookieState.cookieId, categoryId: cookieState.categoryId })
+            }
+        }
+
         setCookieStateArray(CookieState);
     }
 
@@ -85,7 +122,6 @@ export const CookieProvider = ({ children }: CookieProviderProps) => {
     function saveCookies() {
         for (let cookieCategory of CookieInfoArray) {
             for (let cookie of cookieCategory.cookies) {
-
                 if (getStateById(cookie.id)) {
                     let novoCookie = new Cookie();
                     novoCookie.id = cookie.id;
@@ -96,14 +132,11 @@ export const CookieProvider = ({ children }: CookieProviderProps) => {
 
                     cookieInfo.salvar(novoCookie);
                 }
-
-
             }
         }
     }
-
     return (
-        <CookieContext.Provider value={{ CookieStateArray, setCookieStateArray, CookieInfoArray, setAllState, setStateById, getStateById, saveCookies }}>
+        <CookieContext.Provider value={{ CookieStateArray, setCookieStateArray, CookieInfoArray, setAllState, setStateById, getStateById, setStateByCategoryId, getCategoryState,saveCookies }}>
             {children}
         </CookieContext.Provider>
     )

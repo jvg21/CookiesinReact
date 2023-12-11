@@ -14,6 +14,7 @@ import { CookieContext } from "../../../application/context/CookieContext";
 import { CookiePageContext } from "../../../application/context/CookiePageContext";
 import { CookieCategoryList } from "../../components/cookiecateogorylist/CookieCategoryList";
 import { CookieToggleOption } from "../../components/cookietoggleoption/CookieToggleOption";
+import { CategoryToggleOption } from "../../components/categorytoggleoption/CategoryToggleOption";
 
 const CookieOptionList = styled.ul`
     display: flex;
@@ -54,9 +55,11 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
             <CookieOptionList>
                 {
                     CookieInfoArray.map((category, index) => {
+                        // console.log(category);
+                        
                         return (
                             <>
-                                <CookieToggleOption
+                                <CategoryToggleOption
                                     key={index+9999}
                                     id={category.id}
                                     name={category.name}
