@@ -5,8 +5,11 @@ import { BsFillInfoCircleFill } from "react-icons/bs";
 import { ToggleSwitch } from "../cookietoggleswitch/CookieToggleSwitch";
 import { CookieContext } from "../../../application/context/CookieContext";
 import { DescriptionDiv } from "../descriptiondiv/DescriptionDiv";
+import { TextsConstants } from "../../../application/common/constants/TextsConstants";
+import { CookieTitle } from "../cookietitle/CookieTitle";
+import { CookieLiSubContainer } from "../cookielisubcontainer/CookieLiSubContainer";
 
-const CookieOptionLi = styled.td`
+const CookieLI = styled.li`
     padding: 0.85px 0;
     width: 95%;
     line-height: 30px;
@@ -17,32 +20,20 @@ const CookieOptionLi = styled.td`
     border-bottom: 0.5px solid lightgray;
 `;
 
-const CookieLiSubContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap:10px;
-    padding-left: 10%;
-    
-`;
-const OptionText = styled.p`
-    font-size: 20px;
-`;
-
 export function CookieToggleOption(props: CookieToggleOptionType) {
     const { setStateById } = useContext(CookieContext)
 
     return (
-        <tr>
-            <CookieOptionLi>
+        <>
+            <CookieLI>
                 <CookieLiSubContainer title={props.title}>
-                    <OptionText >{props.name}</OptionText>
+                    <CookieTitle fontSize={TextsConstants.MEDIUM_FONT_SIZE} color={props.cookieThemeConfig.primaryTextColor}>ㅤㅤ{props.name}</CookieTitle>
                     <DescriptionDiv>
                         <BsFillInfoCircleFill/>
                     </DescriptionDiv>
                 </CookieLiSubContainer>
                 <ToggleSwitch cookiethemeconfig={props.cookieThemeConfig} setCookieState={setStateById} id={props.id} checked={props.switchState || false} />
-            </CookieOptionLi>
-        </tr>
+            </CookieLI>
+        </>
     )
 }

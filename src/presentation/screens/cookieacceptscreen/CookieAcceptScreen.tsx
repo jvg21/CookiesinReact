@@ -7,7 +7,6 @@ import { ButtonDiv } from "../../components/cookiebuttondiv/CookieButtonDiv";
 import { CookieButton } from "../../components/cookiebutton/CookieButton";
 import { CookieLink } from "../../components/cookielink/CookieLink";
 import { CookieAcceptScreenType } from "../../../application/types/screens/cookieacceptscreen/CookieAcceptScreenType";
-import { Spacer } from "../../components/spacer/spacer";
 import { TextsConstants } from "../../../application/common/constants/TextsConstants";
 import PresentationTexts from '../../../infrastructure/services/presentationTexts.json'
 import { useContext } from "react";

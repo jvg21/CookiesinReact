@@ -15,12 +15,9 @@ import { CookiePageContext } from "../../../application/context/CookiePageContex
 import { CookieCategoryList } from "../../components/cookiecateogorylist/CookieCategoryList";
 import { CategoryToggleOption } from "../../components/categorytoggleoption/CategoryToggleOption";
 
-const CookieOptionList = styled.table`
+const CookieOptionList = styled.ul`
     width: 93%;
-
-    
 `;
-
 export function CookieConfigScreen(props: CookieConfigScreenType) {
     const { setModalCookieConfig } = useContext(CookiePageContext)
     const { setAllState, CookieInfoArray } = useContext(CookieContext)
@@ -49,25 +46,21 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
                 </CookieLink>
                 
             </CookieDescription>
-            <Spacer height="30px" width="100%">
-            ㅤ
-            </Spacer>
+            <Spacer height="30px"/>
             <CookieOptionList>
                 {
-                    CookieInfoArray.map((category, index) => {
-                        // console.log(category);
+                    CookieInfoArray.map((category,index) => {
                         return (
-                            <>
+                            <div key={index}>
                                 <CategoryToggleOption
-                                    key={index+9999}
                                     id={category.id}
                                     name={category.name}
                                     title={category.description}
                                     cookieThemeConfig={props.themeConfig}
                                 />
-                                <CookieCategoryList key={index} themeConfig={props.themeConfig} cookieList={category.cookies}></CookieCategoryList>
+                                <CookieCategoryList themeConfig={props.themeConfig} cookieList={category.cookies}></CookieCategoryList>
 
-                            </>
+                            </div>
                         )
                     })
                 }

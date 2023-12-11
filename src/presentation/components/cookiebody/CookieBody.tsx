@@ -10,7 +10,6 @@ export const CookieBody = styled.div<{ cookiethemeconfig: CookieThemeConfig }>`
     width: 90%;
     overflow-y:auto;
 
-    
     /* SCROLLBAR MOD */
         &::-webkit-scrollbar {
             background: ${(props) => props.cookiethemeconfig.backgroundColor}; //fundo

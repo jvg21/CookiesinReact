@@ -1,7 +1,6 @@
-import { ChangeEvent, useContext } from "react";
+import { ChangeEvent } from "react";
 import styled from "styled-components";
 import { CookieThemeConfig } from "../../../application/model/cookiethemeconfig/CookieThemeConfig";
-import { CookieContext } from "../../../application/context/CookieContext";
 
 const Label = styled.label`
   display: flex;

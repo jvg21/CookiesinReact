@@ -7,8 +7,9 @@ import { CookieContext } from "../../../application/context/CookieContext";
 import { DescriptionDiv } from "../descriptiondiv/DescriptionDiv";
 import { CookieTitle } from "../cookietitle/CookieTitle";
 import { TextsConstants } from "../../../application/common/constants/TextsConstants";
+import { CookieLiSubContainer } from "../cookielisubcontainer/CookieLiSubContainer";
 
-const CategoryTh = styled.td`
+const CategoryLI = styled.li`
     padding: 0.85px 0;
     width: 95%;
     line-height: 30px;
@@ -19,22 +20,12 @@ const CategoryTh = styled.td`
     border-bottom: 0.5px solid lightgray;
 `;
 
-const CookieLiSubContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap:10px;
-    
-`;
-
-
-
 export function CategoryToggleOption(props: CookieToggleOptionType) {
     const { setStateByCategoryId, getCategoryState } = useContext(CookieContext)
 
     return (
-        <tr>
-            <CategoryTh>
+        <>
+            <CategoryLI>
                 <CookieLiSubContainer title={props.title} >
                     <CookieTitle fontSize={TextsConstants.MEDIUM_FONT_SIZE} color={props.cookieThemeConfig.primaryTextColor}>{props.name}</CookieTitle>
                     <DescriptionDiv>
@@ -42,7 +33,7 @@ export function CategoryToggleOption(props: CookieToggleOptionType) {
                     </DescriptionDiv>
                 </CookieLiSubContainer>
                 <ToggleSwitch cookiethemeconfig={props.cookieThemeConfig} setCookieState={setStateByCategoryId} id={props.id} checked={getCategoryState(props.id)} />
-            </CategoryTh>
-        </tr>
+            </CategoryLI>
+        </>
     )
 }
