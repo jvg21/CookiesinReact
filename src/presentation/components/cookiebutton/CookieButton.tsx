@@ -13,6 +13,7 @@ export const CookieButton = styled.button<{ background?: string, textcolor?: str
     transition: all 0.5s ease;
     box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.5);
     overflow: hidden;
+    margin: 3.5px;
 
     &:hover{
         background-color: ${props => props.hoverbgcolor ? props.hoverbgcolor : " "};

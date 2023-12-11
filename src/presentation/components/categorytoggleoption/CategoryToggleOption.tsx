@@ -1,11 +1,14 @@
 import styled from "styled-components";
-import {useContext} from 'react'
+import { useContext } from 'react'
 import { CookieToggleOptionType } from "../../../application/types/components/cookietoggleoptiontype.ts/CookieToggleOptionType";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import { ToggleSwitch } from "../cookietoggleswitch/CookieToggleSwitch";
 import { CookieContext } from "../../../application/context/CookieContext";
+import { DescriptionDiv } from "../descriptiondiv/DescriptionDiv";
+import { CookieTitle } from "../cookietitle/CookieTitle";
+import { TextsConstants } from "../../../application/common/constants/TextsConstants";
 
-const CookieOptionLi = styled.li`
+const CategoryTh = styled.td`
     padding: 0.85px 0;
     width: 95%;
     line-height: 30px;
@@ -23,24 +26,23 @@ const CookieLiSubContainer = styled.div`
     gap:10px;
     
 `;
-const OptionText = styled.p`
-    font-size: 20px;
-    font-weight: bolder;
-`;
+
+
 
 export function CategoryToggleOption(props: CookieToggleOptionType) {
-  const {setStateByCategoryId,getCategoryState} = useContext(CookieContext)
-    // console.log(props.id,getCategoryState(props.id));
-    
+    const { setStateByCategoryId, getCategoryState } = useContext(CookieContext)
+
     return (
-        <>
-            <CookieOptionLi>
-                <CookieLiSubContainer>
-                    <OptionText>{props.name}</OptionText>
-                    <BsFillInfoCircleFill title={props.title} />
+        <tr>
+            <CategoryTh>
+                <CookieLiSubContainer title={props.title} >
+                    <CookieTitle fontSize={TextsConstants.MEDIUM_FONT_SIZE} color={props.cookieThemeConfig.primaryTextColor}>{props.name}</CookieTitle>
+                    <DescriptionDiv>
+                        <BsFillInfoCircleFill />
+                    </DescriptionDiv>
                 </CookieLiSubContainer>
-                <ToggleSwitch cookiethemeconfig={props.cookieThemeConfig} setCookieState={setStateByCategoryId} id={props.id} checked={getCategoryState(props.id) } />
-            </CookieOptionLi>
-        </>
+                <ToggleSwitch cookiethemeconfig={props.cookieThemeConfig} setCookieState={setStateByCategoryId} id={props.id} checked={getCategoryState(props.id)} />
+            </CategoryTh>
+        </tr>
     )
 }

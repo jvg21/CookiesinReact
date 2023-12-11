@@ -129,7 +129,6 @@ export const CookieProvider = ({ children }: CookieProviderProps) => {
                     novoCookie.description = cookie.description;
                     novoCookie.validity = cookie.validity;
                     novoCookie.content = cookie.content;
-
                     cookieInfo.salvar(novoCookie);
                 }
             }

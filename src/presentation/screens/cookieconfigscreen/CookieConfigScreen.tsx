@@ -13,16 +13,12 @@ import { useContext } from "react";
 import { CookieContext } from "../../../application/context/CookieContext";
 import { CookiePageContext } from "../../../application/context/CookiePageContext";
 import { CookieCategoryList } from "../../components/cookiecateogorylist/CookieCategoryList";
-import { CookieToggleOption } from "../../components/cookietoggleoption/CookieToggleOption";
 import { CategoryToggleOption } from "../../components/categorytoggleoption/CategoryToggleOption";
 
-const CookieOptionList = styled.ul`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 88%;
-    margin-bottom: 2vh;
+const CookieOptionList = styled.table`
+    width: 93%;
+
+    
 `;
 
 export function CookieConfigScreen(props: CookieConfigScreenType) {
@@ -34,10 +30,11 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
             cookiethemeconfig={props.themeConfig}
         >
             <CookieTitle
-                fontSize={TextsConstants.MEDIUM_TITLE_SIZE}>
+                fontSize={TextsConstants.MEDIUM_TITLE_SIZE}
+                color={props.themeConfig.primaryTextColor}>
                 {PresentationTexts.configPageTitle}
             </CookieTitle>
-            <Spacer height={'50px'} />
+
             <CookieDescription
                 textalign='justify'
                 fontSize={TextsConstants.MEDIUM_FONT_SIZE}
@@ -50,13 +47,15 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
                     target="_blank">
                     {PresentationTexts.configPageLinkText}
                 </CookieLink>
+                
             </CookieDescription>
-            <Spacer height="30px" />
+            <Spacer height="30px" width="100%">
+            ㅤ
+            </Spacer>
             <CookieOptionList>
                 {
                     CookieInfoArray.map((category, index) => {
                         // console.log(category);
-                        
                         return (
                             <>
                                 <CategoryToggleOption
@@ -82,14 +81,12 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
                 >
                     {PresentationTexts.configPageAcceptButton}
                 </CookieButton>
-                <Spacer height="10px" />
                 <CookieButton
                     textcolor={props.themeConfig.primaryTextColor}
                     hoverbgcolor={props.themeConfig.backgroundColor}
                     onClick={() => setModalCookieConfig(false)}>
                     {PresentationTexts.configPageSaveButton}
                 </CookieButton>
-                <Spacer height="10px" />
             </ButtonDiv>
         </CookieBody>
     )

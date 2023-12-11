@@ -6,7 +6,6 @@ import { CookieAcceptScreen } from "../../screens/cookieacceptscreen/CookieAccep
 import { CookieConfigScreen } from "../../screens/cookieconfigscreen/CookieConfigScreen";
 import { CookieBackground } from "../cookiebackground/CookieBackground";
 import { CookieCloseButton } from "../cookieclosebutton/CookieCloseButton";
-import { CookieContext } from "../../../application/context/CookieContext";
 import { CookiePageContext } from "../../../application/context/CookiePageContext";
 
 const CookieCardContainer = styled.div<{ cookiethemeconfig: CookieThemeConfig; }>`
@@ -30,6 +29,7 @@ const CookieCardContainer = styled.div<{ cookiethemeconfig: CookieThemeConfig; }
         margin-top: 17.5rem
     }
 `;
+
 export function CookiePage(props: { themeConfig: CookieThemeConfig }) {
     const { modalCookie, setModalCookie, modalCookieConfig } = useContext(CookiePageContext)
 

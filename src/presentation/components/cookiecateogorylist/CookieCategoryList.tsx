@@ -6,7 +6,6 @@ import { Cookie } from "../../../application/model/cookie/Cookie";
 
 export function CookieCategoryList(props: { themeConfig: CookieThemeConfig, cookieList: Cookie[] }) {
     const { getStateById } = useContext(CookieContext)
-
     return (
         <>
             {

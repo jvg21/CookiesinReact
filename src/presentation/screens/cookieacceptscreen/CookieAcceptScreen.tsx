@@ -44,7 +44,6 @@ export function CookieAcceptScreen(props: CookieAcceptScreenType) {
                 fontSize={TextsConstants.MEDIUM_TITLE_SIZE}>
                 {PresentationTexts.acceptPageTitle}
             </CookieTitle>
-            <Spacer height="50px" />
             <CookieDescription
                 color={props.themeConfig.primaryTextColor}
                 textalign="center"
@@ -57,7 +56,6 @@ export function CookieAcceptScreen(props: CookieAcceptScreenType) {
                 href="./termos" target="_blank">
                 {PresentationTexts.acceptPageLinkText}
             </CookieLink>
-            <Spacer height="1vh" />
             <ButtonDiv>
                 <CookieButton
                     background={props.themeConfig.primaryAccentColor}
@@ -67,14 +65,12 @@ export function CookieAcceptScreen(props: CookieAcceptScreenType) {
                 >
                     {acceptButtonTextChange()}
                 </CookieButton>
-                <Spacer height="10px"/>
                 <CookieButton
                     textcolor={props.themeConfig.primaryTextColor}
                     hoverbgcolor={props.themeConfig.backgroundColor}
                     onClick={() => setModalCookieConfig(true)}>
                     {PresentationTexts.acceptPageConfigButton}
                 </CookieButton>
-                <Spacer height="10px"/>
             </ButtonDiv>
         </CookieBody>
     )
