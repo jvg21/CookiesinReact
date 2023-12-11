@@ -48,10 +48,9 @@ export function ToggleSwitch(props: { checked: boolean, id: number, cookiethemec
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (props.setCookieState) {
       (props.setCookieState(props.id, e.target.checked))
-      // console.log(CookieStateArray);
     }
   };
-  
+
   return (
     <Label>
       <Input inputcolor={props.cookiethemeconfig.primaryAccentColor} checked={props.checked} type="checkbox" onChange={handleChange} />

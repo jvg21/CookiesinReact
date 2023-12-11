@@ -1,7 +1,8 @@
-import { Dispatch, ReactNode, SetStateAction, createContext, useState } from 'react'
+import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useState } from 'react'
 import { CookieController } from "../controller/cookiecontroller/CookieController";
 import { CookieCategory } from '../model/cookiecategory/CookieCategory';
 import { Cookie } from '../model/cookie/Cookie';
+import { CookiePageContext } from './CookiePageContext';
 
 export interface CookieContextInterface {
     CookieStateArray: CookieState[],
@@ -10,24 +11,20 @@ export interface CookieContextInterface {
     setStateById: (index: number, cookieState: boolean) => void,
     getStateById: (id: number) => boolean,
     setStateByCategoryId: (index: number, cookieState: boolean) => void,
-    getCategoryState:(idCategory:number)=>boolean;
+    getCategoryState: (idCategory: number) => boolean;
     setAllState: () => void
     saveCookies: () => void,
-    // getCategories:()=>string[]
 
 }
 const defaultState = {
     CookieStateArray: {},
     setCookieStateArray: (_: CookieState[]) => { },
-    // CookieInfoArray : {},
     setStateById: (_: number, __: boolean) => { },
     getStateById: (_: number) => { },
     setStateByCategoryId: (_: number, __: boolean) => { },
     getCategoryState: (_: number) => { },
-    // setCookieStateByCategory:(_:string,__:boolean)=>{},
     setAllState: () => { },
     saveCookies: () => { },
-    // getCategories:()=>{}
 
 } as CookieContextInterface
 
@@ -40,11 +37,11 @@ type CookieState = {
     state: boolean,
     cookieId: number,
     categoryId: number
-
 }
 
 export const CookieProvider = ({ children }: CookieProviderProps) => {
     let cookieInfo = new CookieController();
+    const { setModalCookie } = useContext(CookiePageContext);
 
     const [CookieInfoArray, setCookieInfoArray] = useState<CookieCategory[]>(initCookieInfoArray())
     const [CookieStateArray, setCookieStateArray] = useState<CookieState[]>(initCookieStateArray())
@@ -130,12 +127,13 @@ export const CookieProvider = ({ children }: CookieProviderProps) => {
                     novoCookie.validity = cookie.validity;
                     novoCookie.content = cookie.content;
                     cookieInfo.salvar(novoCookie);
+                    setModalCookie(false);
                 }
             }
         }
     }
     return (
-        <CookieContext.Provider value={{ CookieStateArray, setCookieStateArray, CookieInfoArray, setAllState, setStateById, getStateById, setStateByCategoryId, getCategoryState,saveCookies }}>
+        <CookieContext.Provider value={{ CookieStateArray, setCookieStateArray, CookieInfoArray, setAllState, setStateById, getStateById, setStateByCategoryId, getCategoryState, saveCookies }}>
             {children}
         </CookieContext.Provider>
     )

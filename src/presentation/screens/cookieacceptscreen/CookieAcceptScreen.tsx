@@ -32,7 +32,7 @@ export function CookieAcceptScreen(props: CookieAcceptScreenType) {
         }
         return PresentationTexts.acceptPageRejectButton;
     }
-    
+
     return (
         <CookieBody cookiethemeconfig={props.themeConfig}>
             <CookieImageContainer>

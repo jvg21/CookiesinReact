@@ -44,12 +44,12 @@ export function CookieConfigScreen(props: CookieConfigScreenType) {
                     target="_blank">
                     {PresentationTexts.configPageLinkText}
                 </CookieLink>
-                
+
             </CookieDescription>
-            <Spacer height="30px"/>
+            <Spacer height="30px" />
             <CookieOptionList>
                 {
-                    CookieInfoArray.map((category,index) => {
+                    CookieInfoArray.map((category, index) => {
                         return (
                             <div key={index}>
                                 <CategoryToggleOption

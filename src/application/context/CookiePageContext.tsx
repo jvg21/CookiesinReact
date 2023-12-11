@@ -30,7 +30,7 @@ export const CookiePageProvider = ({ children }: CookiePageProviderProps) => {
 
     function haveActiveCookies(): boolean {
         for (let cookie of cookies) {
-            
+
             if (Cookies.get(cookie.name)) {
                 return false;
             }
