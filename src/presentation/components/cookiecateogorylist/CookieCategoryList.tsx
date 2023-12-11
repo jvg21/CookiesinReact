@@ -7,9 +7,9 @@ import { Cookie } from "../../../application/model/cookie/Cookie";
 export function CookieCategoryList(props: { themeConfig: CookieThemeConfig, cookieList: Cookie[] }) {
     const { getStateById } = useContext(CookieContext)
     return (
-        <div >
+        <div>
             {
-                props.cookieList.map((cookie,index) => {
+                props.cookieList.map((cookie, index) => {
                     return (
                         <div key={index}>
                             <CookieToggleOption
@@ -19,11 +19,9 @@ export function CookieCategoryList(props: { themeConfig: CookieThemeConfig, cook
                                 switchState={getStateById(cookie.id)}
                                 cookieThemeConfig={props.themeConfig}
                             />
-
-                        </div>)
-
+                        </div>
+                    )
                 })
-
             }
         </div>
     )
