@@ -38,7 +38,11 @@ export function CookiePage(props: { themeConfig: CookieThemeConfig }) {
 
     return (
         <>
-            {
+        <p>
+             - VER QUAL COOKIE SERÁ UTILIZADO PARA DEFINIR O TEMPO PARA PEDIR NOVO ACEITE <br/>
+             - Ver COMO SALVAR OS CONTEUDOS DOS COOKIES E OS COOKIES DO GOOGLE 
+        </p>
+            {   
                 modalCookie &&
                 <CookieBackground cookiethemeconfig={props.themeConfig}>
                     <CookieCardContainer

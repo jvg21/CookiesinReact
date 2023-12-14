@@ -12,6 +12,7 @@ export class CookieRepository{
             let categoryCookie = new CookieCategory();
             categoryCookie.id = category.id;
             categoryCookie.name = category.name;
+            categoryCookie.description = category.description;
             let cookieList: Cookie[] = [];
             category.cookies.map((cookie)=>{
                 let newCookie : Cookie = new Cookie();

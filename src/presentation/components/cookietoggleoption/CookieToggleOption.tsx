@@ -22,12 +22,11 @@ const CookieLI = styled.li`
 
 export function CookieToggleOption(props: CookieToggleOptionType) {
     const { setStateById } = useContext(CookieContext)
-
     return (
         <>
             <CookieLI>
                 <CookieLiSubContainer title={props.title}>
-                    <CookieTitle fontSize={TextsConstants.MEDIUM_FONT_SIZE} color={props.cookieThemeConfig.primaryTextColor}>ㅤㅤ{props.name}</CookieTitle>
+                    <CookieTitle fontSize={TextsConstants.MEDIUM_FONT_SIZE} color={props.cookieThemeConfig.primaryTextColor}>ㅤ{props.name}</CookieTitle>
                     <DescriptionDiv>
                         <BsFillInfoCircleFill/>
                     </DescriptionDiv>

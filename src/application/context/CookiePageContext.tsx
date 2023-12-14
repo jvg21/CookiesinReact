@@ -2,6 +2,7 @@ import { Dispatch, ReactNode, SetStateAction, createContext, useState } from 're
 import { CookieController } from "../controller/cookiecontroller/CookieController";
 import Cookies from 'js-cookie';
 
+// const cookieContollName = ''
 export interface CookiePageContextInterface {
     modalCookie: boolean,
     setModalCookie: Dispatch<SetStateAction<boolean>>,
@@ -10,9 +11,9 @@ export interface CookiePageContextInterface {
 }
 const defaultState = {
     modalCookie: {},
-    setModalCookie: (value: boolean) => { },
+    setModalCookie: (_: boolean) => { },
     modalCookieConfig: {},
-    setModalCookieConfig: (value: boolean) => { },
+    setModalCookieConfig: (_: boolean) => { },
 
 } as CookiePageContextInterface
 
