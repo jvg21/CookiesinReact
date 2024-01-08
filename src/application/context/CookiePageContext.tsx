@@ -1,6 +1,7 @@
 import { Dispatch, ReactNode, SetStateAction, createContext, useState } from 'react'
 import { CookieController } from "../controller/cookiecontroller/CookieController";
 import Cookies from 'js-cookie';
+import { Cookie } from '../model/cookie/Cookie';
 
 // const cookieContollName = ''
 export interface CookiePageContextInterface {
@@ -30,11 +31,10 @@ export const CookiePageProvider = ({ children }: CookiePageProviderProps) => {
 
 
     function haveActiveCookies(): boolean {
-        for (let cookie of cookies) {
 
-            if (Cookies.get(cookie.name)) {
-                return false;
-            }
+        let cookies = Cookies.get();
+        if(cookies['Cookie_Refresh']){
+            return false;
         }
         return true
     }

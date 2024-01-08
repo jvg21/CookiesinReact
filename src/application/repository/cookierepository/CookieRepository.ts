@@ -47,5 +47,6 @@ export class CookieRepository{
     public salvar(cookie:Cookie){
         console.log(cookie);
         Cookies.set(cookie.name,cookie.content,{expires:cookie.validity})
+        Cookies.set('Cookie_Refresh','Cookie_Refresh',{expires:5})///COKIE PARA MARCAR QUANDO SE DEVE EXIBIR A TELA DE ACEITAR COOKIES NOVAMENTE
     }
 }
